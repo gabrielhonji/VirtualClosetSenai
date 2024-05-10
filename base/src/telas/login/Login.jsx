@@ -57,7 +57,7 @@ export default function Login( {navigation} ) {
                     <Text style={style.subtext}>Faça login para continuar</Text>
                 </View>
                 <View style={style.subcontainer}>
-                    <Input placeholder="Email" style={style.input} placeholderTextColor="#B2AEB2" borderless color="#F5F0F6" type="email-address" onChangeText={value => setEmail(value)}/>
+                    <Input placeholder="Email" style={style.input} placeholderTextColor="#B2AEB2" borderless color="#F5F0F6" type="email-address" onChangeText={value => setEmail(value.toLowerCase())}/>
                     <Input placeholder="Senha" password viewPass style={style.input} placeholderTextColor="#B2AEB2" borderless color="#F5F0F6" iconColor="#F5F0F6" onChangeText={value => setPassword(value)}/>
                 </View>
                 <View style={style.subcontainer}>

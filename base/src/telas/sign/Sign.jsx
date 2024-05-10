@@ -6,7 +6,6 @@ import axios from 'axios';
 
 export default function Sign({ navigation }) {
     const [mensagem, setMensagem] = useState('');
-    //const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -20,7 +19,6 @@ export default function Sign({ navigation }) {
         }
         
         const data = {
-           // id:id,
             name:name,
             email:email,
             password:password
@@ -29,11 +27,13 @@ export default function Sign({ navigation }) {
         try {
             await axios.post('http://10.0.2.2:8085/user/cadastrar', data);
             Alert.alert('Cadastro realizado com sucesso');
-            
             navigation.navigate('Inicio');
         } catch (error) {
+            if (error === 401) {
+                setMensagem('O usuário ja existe.}')
+            } else
                 console.log(error);
-                setMensagem('Ocorreu um erro ao cadastrar o usuário. Tente novamente!!!')
+                setMensagem('Ocorreu um erro ao cadastrar o usuário. Tente novamente.')
             }
         }
     
@@ -56,7 +56,7 @@ export default function Sign({ navigation }) {
                     <Input placeholder="Email"
                         style={style.input}
                         placeholderTextColor="#B2AEB2" borderless color="#F5F0F6" type="email-address"
-                        onChangeText={value => setEmail(value)} />
+                        onChangeText={value => setEmail(value.toLowerCase())} />
                     <Input placeholder="Senha"
                         password viewPass style={style.input}
                         placeholderTextColor="#B2AEB2" borderless color="#F5F0F6" iconColor="#F5F0F6"
