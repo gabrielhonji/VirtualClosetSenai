@@ -48,7 +48,6 @@ export default function Login( {navigation} ) {
 
     return (
         <SafeAreaView style={style.main_container}>
-            <Text style={style.text}>{email}/{password}</Text>
             <View style={style.container_1}>
                 <Image style={style.icon} source={require('../../../res/img/Icon.png')}/>
             </View>
