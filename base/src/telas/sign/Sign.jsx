@@ -29,11 +29,11 @@ export default function Sign({ navigation }) {
             Alert.alert('Cadastro realizado com sucesso');
             navigation.navigate('Inicio');
         } catch (error) {
-            if (error === 401) {
-                setMensagem('O usuário ja existe.}')
+            if (error.response.status === 401) {
+                Alert.alert('O email' + data.email + 'já está cadastrado');
             } else
                 console.log(error);
-                setMensagem('Ocorreu um erro ao cadastrar o usuário. Tente novamente.')
+                Alert.alert('Ocorreu um erro ao cadastrar o usuário. Tente novamente.');
             }
         }
     
