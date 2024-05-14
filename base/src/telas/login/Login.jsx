@@ -9,12 +9,12 @@ export default function Login( {navigation} ) {
     const [password, setPassword] = useState("");
 
     const handleLogin = async () =>{
+        //verificar se os campos foram preenchidos 
+        if(!email || !password){
+            Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+            return
+        }
         try{
-            //verificar se os campos foram preenchidos 
-            if(!email || !password){
-                Alert.alert('Erro', 'Por favor, preencha todos os campos.');
-                return
-            }
 
             //Objetivo para enviar para a API
             const data = {
