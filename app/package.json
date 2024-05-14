@@ -10,11 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@gluestack-style/react": "latest",
-    "@gluestack-ui/themed": "latest",
-    "@gluestack-ui/config": "latest",
-    "@legendapp/motion": "latest",
     "@expo/html-elements": "latest",
+    "@gluestack-style/react": "latest",
+    "@gluestack-ui/config": "^1.1.18",
+    "@gluestack-ui/themed": "latest",
+    "@legendapp/motion": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.3",
