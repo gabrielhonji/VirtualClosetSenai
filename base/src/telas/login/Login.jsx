@@ -15,7 +15,6 @@ export default function Login( {navigation} ) {
             return
         }
         try{
-
             //Objetivo para enviar para a API
             const data = {
                 email:email,

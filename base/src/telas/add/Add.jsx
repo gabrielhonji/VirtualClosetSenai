@@ -17,12 +17,12 @@ SistemaArquivos.mkdir(diretorioImagens).then(() => {
 });
 
 export default function Add( {navigation} ) {
-    const [clothName, setClothName] = useState("");
-    const [clothSize, setClothSize] = useState("");
-    const [clothDescription, setClothDescription] = useState("");
+    const [name, setName] = useState("");
+    const [size_id_size, setSize_Id_Size] = useState("");
+    const [descripction, setDescripction] = useState("");
     const [clothStyle, setClothStyle] = useState("");
-    const [clothColor, setClothColor] = useState("");
-    const [clothTags, setClothTags] = useState("");
+    const [color_id_color, setColor_Id_Color] = useState("");
+    const [tag_id_tag, setTag_Id_Tag] = useState("");
 
     const [caminhoImagem, setCaminhoImagem] = useState(null);
     const [listaArquivos, setListaArquivos] = useState([]);
