@@ -27,7 +27,7 @@ export default function Sign({ navigation }) {
         try {
             await axios.post('http://10.0.2.2:8085/user/cadastrar', data);
             Alert.alert('Cadastro realizado com sucesso');
-            navigation.navigate('Inicio');
+            navigation.navigate('Login');
         } catch (error) {
             if (error.response.status === 401) {
                 Alert.alert('O email' + data.email + 'já está cadastrado');
