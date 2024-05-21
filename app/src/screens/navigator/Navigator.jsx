@@ -2,60 +2,74 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-import styles from './Styles.jsx';
-import { Progress, ProgressFilledTrack } from '@gluestack-ui/themed';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 import Login from '../login/Login';
-
-export function Test() {
-    return (
-        <Progress value={10} w={300} size="md">
-            <ProgressFilledTrack />
-        </Progress>
-    );
-}
+import { Box } from '@gluestack-ui/themed';
 
 export function HomeNavigator() {
     return (
-        <Tab.Navigator backBehavior='history' initialRouteName='Test' screenOptions={({route}) => ({
-            headerShown: false,
-            tabBarShowLabel: false,
-            tabBarActiveTintColor: '#F5F0F6',
-            tabBarActiveBackgroundColor: '#654E4D',
-            tabBarHideOnKeyboard: true,
-            tabBarItemStyle: {
-                borderRadius: 10,
-                margin: 10,
-            },
-            tabBarStyle: {
-                backgroundColor: '#2D2221',
-                borderRadius: 10,
-                marginHorizontal: 10,
-                marginBottom: 20,
-                height: 70,
-            },
-            tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
-                iconName = focused
-            }
+        <Box bg='#1E1716' h='100%'>
+            <Tab.Navigator backBehavior='history' initialRouteName='Test' screenOptions={({route}) => ({
+                tabBarIcon: ({ focused }) => {
+                    let iconName;
+                    let iconSize;
+                    let iconColor;
+
+                    if (route.name === 'Closet') {
+                        iconName = focused
+                        ? 'grid' : 'grid-outline' ;
+                    } else if (route.name === 'RandFit') {
+                        iconName = focused
+                        ? 'shirt' : 'shirt-outline' ;
+                    } else if (route.name === 'Add') {
+                        iconName = focused
+                        ? 'add-circle' : 'add' ;
+                    }
+
+                    iconSize = focused
+                        ? 30 : 24 ;
+                    iconColor = focused
+                        ? '#F5F0F6' : '#8f8f8f';
+
+                return <Ionicons name={iconName} size={iconSize} color={iconColor} />;
+            
+                },
+                headerShown: false,
+                tabBarShowLabel: false,
+                tabBarActiveBackgroundColor: '#654E4D',
+                tabBarHideOnKeyboard: true,
+                tabBarItemStyle: {
+                    borderRadius: 10,
+                    margin: 10,
+                },
+                tabBarStyle: {
+                    backgroundColor: '#2D2221',
+                    borderRadius: 10,
+                    marginHorizontal: 10,
+                    marginBottom: 20,
+                    height: 70,
+                    borderTopWidth: 0,
+                }
             })}>
-            <Tab.Screen name="Test1" component={Test} />
-            <Tab.Screen name="Test2" component={Test} />
-            <Tab.Screen name="Login" component={Login} />
-        </Tab.Navigator>
+                <Tab.Screen name="Closet" component={Login} />
+                <Tab.Screen name="RandFit" component={Login} />
+                <Tab.Screen name="Add" component={Login} />
+            </Tab.Navigator>
+        </Box>
     );
 }
 
 export default function StartNavigator() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='HomeNavigator' screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="HomeNavigator" component={HomeNavigator}/>
+            <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Home" component={HomeNavigator}/>
+                <Stack.Screen name="Login" component={Login}/>
+                <Stack.Screen name="Sign" component={Login}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
