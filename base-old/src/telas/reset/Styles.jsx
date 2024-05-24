@@ -20,7 +20,10 @@ input: {
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
-}
+},
+btn: {
+    marginBottom: 100,
+},
 });
 
 export default style

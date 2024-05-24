@@ -141,7 +141,7 @@ const userModel = {
     },
 
     //update the password
-    updatePassword: async(email,senha) =>{
+    updatePassword: async(email,password) =>{
         const [result] = await connection.query("UPDATE user SET password=? WHERE email=?", [password,email])
         .catch(error => console.log(error))
         return result;

@@ -4,7 +4,6 @@ import axios from 'axios';
 import styles from './Styles';
 
 const ResetSenha = ({navigation}) => {
-   // const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [novaSenha, setNovaSenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
@@ -50,14 +49,14 @@ const ResetSenha = ({navigation}) => {
             }
             const data = {
                 email: email,
-                senha: novaSenha
+                password: novaSenha
             }
 
             // Fazer a solicitação para trocar a senha
             const response = await axios.post('http://10.0.2.2:8085/api/resetpassword', data);
 
             if (response.status === 200) {
-                navigation.navigate("LoginAP");
+                navigation.navigate("Login");
                 Alert.alert('Senha trocada com sucesso.');
             } else {
                 Alert.alert('Erro ao trocar a senha.');
@@ -70,12 +69,6 @@ const ResetSenha = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Esqueceu sua senha?</Text>
-            {/* <TextInput
-                style={styles.input}
-                placeholder="Digite seu nome"
-                value={nome}
-                onChangeText={setNome}
-            /> */}
             <TextInput
                 style={styles.input}
                 placeholder="Digite seu email"
