@@ -1,6 +1,7 @@
-import { Image, Box, SafeAreaView, KeyboardAvoidingView, Text, Heading, Center, FormControl, FormControlLabel, FormControlLabelText, Input, InputField, VStack, InputSlot } from '@gluestack-ui/themed';
+import { Image, Box, Text, Heading, Center, FormControl, Input, InputField, InputSlot, Button, ButtonText } from '@gluestack-ui/themed';
 import { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
@@ -14,45 +15,41 @@ export default function Login({ navigation }) {
   }
 
   return (
-    <SafeAreaView bg='#1E1716'>
-      <KeyboardAvoidingView behavior='padding'>
-        <Box w='84%' h='$full' py='10%' ml='8%'>
-          <Box h='10%' mb='15%'>
-            <Image size='sm' alt='Virtual Closet logo' source={require('../../../res/img/Icon.png')}/>
-          </Box>
-          <Box h='50%' mb='5%'>
-            <Box mb='15%'>
-              <Heading size='3xl' color='#F5F0F6'>Login</Heading>
-              <Text color='#B2AEB2'>Faça login para continuar</Text>
-            </Box>
-            <Box>
-              <FormControl isRequired={true} mb='$5'>
-                <VStack space='lg'>
-                  <VStack mb='$6'>
-                    <FormControlLabel mb="-$8" ml='$3' zIndex={5}><FormControlLabelText color='#807c80' fontWeight='$medium' fontSize='$xs'>Email:</FormControlLabelText></FormControlLabel>
-                    <Input bg='#2D2221' borderWidth={0} h='$20' ><InputField pt='$8' type="text" placeholder="seu@email.com" onChangeText={value => setEmail(value.toLowerCase())} color='#F5F0F6'/></Input>
-                  </VStack>
-                  <VStack>
-                    <FormControlLabel mb="-$8" ml='$3' zIndex={5}><FormControlLabelText color='#807c80' fontWeight='$medium' fontSize='$xs'>Senha:</FormControlLabelText></FormControlLabel>
-                    <Input bg='#2D2221' borderWidth={0} h='$20'>
-                      <InputField pt='$8' type={showPassword ? "text" : "password"}  placeholder="********" onChangeText={value => setPassword()} color='#F5F0F6'/>
-                      <InputSlot pr="$5" pt='$5' onPress={handleState}>
-                        <Ionicons name={showPassword ? 'eye-outline' : 'eye-off-outline'} color={showPassword ? '#F5F0F6' : '#807c80'} size={20}/>
-                      </InputSlot>
-                    </Input>
-                  </VStack>
-                </VStack>
-              </FormControl>
-            </Box>
-          </Box>
-          <Box bg='#4f4f4f' h='15%' mb='5%'>
-
-          </Box>
-          <Center h='10%' mb='5%'>
-            <Text color='#F5F0F6'>Não tem uma conta? <Text color='#3665cb'>Crie uma agora</Text></Text>
-          </Center>
+    <KeyboardAwareScrollView>
+      <Box w='84%' h='$full' py='10%' ml='8%'>
+        <Box h='10%' mb='15%'>
+          <Image size='sm' alt='Virtual Closet logo' source={require('../../../res/img/Icon.png')}/>
         </Box>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+        <Box h='50%' mb='5%'>
+          <Box mb='15%'>
+            <Heading size='3xl' color='#F5F0F6'>Login</Heading>
+            <Text color='#B2AEB2'>Faça login para continuar</Text>
+          </Box>
+          <Box>
+            <FormControl isRequired={true} mb='$5'>
+              <Input bg='#2D2221' borderWidth={0} h='$16' >
+                <InputField type="text" placeholder="Email:" onChangeText={value => setEmail(value.toLowerCase())} color='#F5F0F6'/>
+              </Input>
+            </FormControl>
+            <FormControl isRequired={true} mb='$5'>
+              <Input bg='#2D2221' borderWidth={0} h='$16'>
+                <InputField type={showPassword ? "text" : "password"}  placeholder="Senha:" onChangeText={value => setPassword()} color='#F5F0F6'/>
+                <InputSlot pr="$5" onPress={handleState}>
+                  <Ionicons name={showPassword ? 'eye-outline' : 'eye-off-outline'} color={showPassword ? '#F5F0F6' : '#807c80'} size={20}/>
+                </InputSlot>
+              </Input>
+            </FormControl>
+          </Box>
+        </Box>
+        <Center h='15%' mb='5%'>
+          <Button size="md" w='80%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
+            <ButtonText color='#F5F0F6'>Entre</ButtonText>
+          </Button>
+        </Center>
+        <Center h='10%' mb='5%'>
+          <Text color='#F5F0F6'>Não tem uma conta? <Text color='#3665cb' onPress={() => navigation.navigate('Sign')}>Crie uma agora</Text></Text>
+        </Center>
+      </Box>
+    </KeyboardAwareScrollView>
   );
 }
