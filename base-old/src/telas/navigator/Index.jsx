@@ -13,6 +13,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from '../login/Login.jsx';
 import Sign from '../sign/Sign.jsx';
+import Update from '../reset/Reset.jsx';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -75,6 +76,7 @@ export default function LoginNavigation() {
             <Stack.Screen name="Inicio" component={Inicio} options={{ headerShown: false, }}/>
             <Stack.Screen name="Login" component={Login} options={{ headerShown: false, }}/>
             <Stack.Screen name="Sign" component={Sign} options={{ headerShown: false, }}/>
+            <Stack.Screen name ='Update' component={Update} options={{ headerShown: false, }}/>
         </Stack.Navigator>
     </NavigationContainer>
   )
