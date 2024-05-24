@@ -3,8 +3,7 @@ import { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-export default function Sign({ navigation }) {
-  const [name, setName] = useState('');
+export default function ResetLogin({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,15 +23,10 @@ export default function Sign({ navigation }) {
           </Box>
           <Box h='55%' mb='5%'>
             <Box mb='10%'>
-              <Heading size='3xl' color='#F5F0F6'>Cadastro</Heading>
-              <Text color='#B2AEB2'>Registre-se para continuar</Text>
+              <Heading size='3xl' color='#F5F0F6'>Restaurar</Heading>
+              <Text color='#B2AEB2'>Insira um email existente para redefinir a senha</Text>
             </Box>
             <Box>
-              <FormControl isRequired={true} mb='$2'>
-                <Input bg='#2D2221' borderWidth={0} h='$16' >
-                  <InputField type="text" placeholder="Nome:" onChangeText={value => setName()} color='#F5F0F6'/>
-                </Input>
-              </FormControl>
               <FormControl isRequired={true} mb='$2'>
                 <Input bg='#2D2221' borderWidth={0} h='$16' >
                   <InputField type="text" placeholder="Email:" onChangeText={value => setEmail(value.toLowerCase())} color='#F5F0F6'/>
@@ -40,7 +34,15 @@ export default function Sign({ navigation }) {
               </FormControl>
               <FormControl isRequired={true} mb='$2'>
                 <Input bg='#2D2221' borderWidth={0} h='$16'>
-                  <InputField type={showPassword ? "text" : "password"}  placeholder="Senha:" onChangeText={value => setPassword()} color='#F5F0F6'/>
+                  <InputField type={showPassword ? "text" : "password"}  placeholder="Nova senha:" onChangeText={value => setPassword()} color='#F5F0F6'/>
+                  <InputSlot pr="$5" onPress={handleState}>
+                    <Ionicons name={showPassword ? 'eye-outline' : 'eye-off-outline'} color={showPassword ? '#F5F0F6' : '#807c80'} size={20}/>
+                  </InputSlot>
+                </Input>
+              </FormControl>
+              <FormControl isRequired={true} mb='$2'>
+                <Input bg='#2D2221' borderWidth={0} h='$16'>
+                  <InputField type={showPassword ? "text" : "password"}  placeholder="Confirme a senha:" onChangeText={value => setPassword()} color='#F5F0F6'/>
                   <InputSlot pr="$5" onPress={handleState}>
                     <Ionicons name={showPassword ? 'eye-outline' : 'eye-off-outline'} color={showPassword ? '#F5F0F6' : '#807c80'} size={20}/>
                   </InputSlot>
@@ -50,7 +52,7 @@ export default function Sign({ navigation }) {
           </Box>
           <Center h='20%' mb='5%'>
             <Button size="md" w='80%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
-              <ButtonText color='#F5F0F6'>Cadastre-se</ButtonText>
+              <ButtonText color='#F5F0F6'>Redefinir</ButtonText>
             </Button>
           </Center>
           <Center h='10%'>

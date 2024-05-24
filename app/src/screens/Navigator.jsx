@@ -10,6 +10,7 @@ const Stack = createStackNavigator();
 
 import Login from './Login';
 import Sign from './Sign';
+import ResetLogin from './ResetLogin';
 
 export function HomeNavigator() {
     return (
@@ -71,7 +72,7 @@ export default function StartNavigator() {
                 <Stack.Screen name="Home" component={HomeNavigator}/>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Sign" component={Sign}/>
-                <Stack.Screen name="ResetLogin" component={Login}/>
+                <Stack.Screen name="ResetLogin" component={ResetLogin}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
