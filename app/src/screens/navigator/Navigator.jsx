@@ -70,6 +70,7 @@ export default function StartNavigator() {
                 <Stack.Screen name="Home" component={HomeNavigator}/>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Sign" component={Login}/>
+                <Stack.Screen name="ResetLogin" component={Login}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
