@@ -23,29 +23,28 @@ export default function Sign({ navigation }) {
             <Image size='sm' alt='Virtual Closet logo' source={require('../../res/img/Icon.png')}/>
           </Box>
           <Box h='55%' mb='5%'>
-            <Box mb='15%'>
+            <Box mb='10%'>
               <Heading size='3xl' color='#F5F0F6'>Cadastro</Heading>
               <Text color='#B2AEB2'>Registre-se para continuar</Text>
             </Box>
             <Box>
-              <FormControl isRequired={true} mb='$5'>
+              <FormControl isRequired={true} mb='$2'>
                 <Input bg='#2D2221' borderWidth={0} h='$16' >
                   <InputField type="text" placeholder="Nome:" onChangeText={value => setName()} color='#F5F0F6'/>
                 </Input>
               </FormControl>
-              <FormControl isRequired={true} mb='$5'>
+              <FormControl isRequired={true} mb='$2'>
                 <Input bg='#2D2221' borderWidth={0} h='$16' >
                   <InputField type="text" placeholder="Email:" onChangeText={value => setEmail(value.toLowerCase())} color='#F5F0F6'/>
                 </Input>
               </FormControl>
-              <FormControl isRequired={true} mb='$5'>
+              <FormControl isRequired={true} mb='$2'>
                 <Input bg='#2D2221' borderWidth={0} h='$16'>
                   <InputField type={showPassword ? "text" : "password"}  placeholder="Senha:" onChangeText={value => setPassword()} color='#F5F0F6'/>
                   <InputSlot pr="$5" onPress={handleState}>
                     <Ionicons name={showPassword ? 'eye-outline' : 'eye-off-outline'} color={showPassword ? '#F5F0F6' : '#807c80'} size={20}/>
                   </InputSlot>
                 </Input>
-                <Text mt='$3' onPress={() => navigation.navigate('ResetLogin')}>Esqueceu a senha?</Text>
               </FormControl>
             </Box>
           </Box>
