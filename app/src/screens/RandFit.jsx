@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-export default function Login({ navigation }) {
+export default function RandFit({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,7 +23,7 @@ export default function Login({ navigation }) {
           </Box>
           <Box h='55%' mb='5%'>
             <Box mb='15%'>
-              <Heading size='3xl' color='#F5F0F6'>Login</Heading>
+              <Heading size='3xl' color='#F5F0F6'>Aleatorizar Roupa</Heading>
               <Text color='#B2AEB2'>Faça login para continuar</Text>
             </Box>
             <Box>

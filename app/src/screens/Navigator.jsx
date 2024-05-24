@@ -11,11 +11,14 @@ const Stack = createStackNavigator();
 import Login from './Login';
 import Sign from './Sign';
 import ResetLogin from './ResetLogin';
+import Add from './Add';
+import Closet from './Closet';
+import RandFit from './RandFit';
 
 export function HomeNavigator() {
     return (
         <Box bg='#1E1716' h='100%'>
-            <Tab.Navigator backBehavior='history' initialRouteName='Test' screenOptions={({route}) => ({
+            <Tab.Navigator backBehavior='history' initialRouteName='Add' screenOptions={({route}) => ({
                 tabBarIcon: ({ focused }) => {
                     let iconName;
                     let iconSize;
@@ -57,9 +60,9 @@ export function HomeNavigator() {
                     borderTopWidth: 0,
                 }
             })}>
-                <Tab.Screen name="Closet" component={Login} />
-                <Tab.Screen name="RandFit" component={Login} />
-                <Tab.Screen name="Add" component={Login} />
+                <Tab.Screen name="Closet" component={Closet} />
+                <Tab.Screen name="RandFit" component={RandFit} />
+                <Tab.Screen name="Add" component={Add} />
             </Tab.Navigator>
         </Box>
     );
@@ -68,7 +71,7 @@ export function HomeNavigator() {
 export default function StartNavigator() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Home" component={HomeNavigator}/>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Sign" component={Sign}/>
