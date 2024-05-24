@@ -68,7 +68,7 @@ export default function Add( {navigation} ) {
         <SafeAreaView style={style.main_container}>
             <View style={style.container_1}>
                 {caminhoImagem ? (
-                    <Button color="#ffffff" style={style.img_button} onPress={tirarFoto}><Image source={{ uri: `file://${caminhoImagem}` }} style={style.img} /></Button>
+                    <Button color="#ffffff" style={style.img_button} onPress={tirarFoto}><Image source={{uri: `file://${caminhoImagem}`}} style={style.img} /></Button>
                 ) : (
                     <Button color="#ffffff" shadowless style={[style.img_button, style.img_shadow_button]} onPress={tirarFoto}><Text style={style.subtext}>Foto da roupa</Text></Button>
                 )}
