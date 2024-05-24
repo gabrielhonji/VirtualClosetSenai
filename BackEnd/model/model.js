@@ -132,6 +132,20 @@ const userModel = {
        .catch(erro => console.log(erro));
         return result
     },
+
+      //email para resetar  senha do usuario
+      resetEmail: async (email) =>{
+        const [result] = await connection.query("SELECT * FROM user WHERE email=?",[email])
+        .catch(error => console.log(error))
+        return result;
+    },
+
+    //update the password
+    updatePassword: async(email,senha) =>{
+        const [result] = await connection.query("UPDATE user SET password=? WHERE email=?", [password,email])
+        .catch(error => console.log(error))
+        return result;
+    }
 };
 
 module.exports = userModel;

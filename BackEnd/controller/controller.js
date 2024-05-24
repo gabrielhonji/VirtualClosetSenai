@@ -305,6 +305,49 @@ const userController = {
             }
         }
     },
+
+      //controller para reset
+      getEmailReset: async (req,res) =>{
+        let {email} = req.body
+
+        email = email.toLowerCase();
+
+        try{
+            const sql = await clientController.getByEmail(email);
+
+            console.log(sql);
+
+            if(sql.length > 0){
+                res.status(200).json({msg:'succes'})
+            }
+            else{
+                res.status(404).json({msg:"email nao esta cadastrado no db"})
+            }
+        }
+        catch(error){
+            if(error){
+
+            }
+        }
+     },
+
+     resetPassword: async (req,res) =>{
+        let {email,password} = req.body
+
+        console.log(req.body);
+
+        email = email.toLowerCase();
+
+        try{
+            await clientController.updatePassword(email,password);
+            res.status(200).json({msg:"senha atualizada com sucesso"});
+        }
+        catch(error){
+            console.log("erro ao redefinir a senha");
+            res.status(500).json({msg:"erro no servidor"})
+        }
+     },
+    
 };
 
 module.exports = userController;

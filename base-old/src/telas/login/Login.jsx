@@ -64,6 +64,7 @@ export default function Login( {navigation} ) {
                 </View>
             </View>
             <View style={style.container_3}>
+                <Text style={style.text}>Esqueceu a sua senha? <Text onPress={() => navigation.navigate('ResetSenha')} style={style.link}>Recupere agora</Text></Text>
                 <Text style={style.text}>Não tem uma conta? <Text onPress={() => navigation.navigate('Sign')} style={style.link}>Crie uma agora</Text></Text>
             </View>
         </SafeAreaView>
