@@ -7,6 +7,7 @@ const ResetSenha = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [novaSenha, setNovaSenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
+    
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
     const handleResetSenha = async () => {
@@ -78,7 +79,6 @@ const ResetSenha = ({navigation}) => {
             {!mostrarFormulario && (
                 <View>
                 <Button title="Resetar Senha" onPress={handleResetSenha} />
-                <Button title="Voltar" onPress={() => navigation.navigate('Login')}/>
                 </View>
             )}
             {mostrarFormulario && (

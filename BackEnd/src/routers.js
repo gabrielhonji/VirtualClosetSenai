@@ -33,8 +33,7 @@ router.post('/roupas/cadastrar', clientController.createClothes); //Cadastrar no
 router.delete('/roupas/deletar/:id_clothes', clientController.deleteClothes); //deletar  usuário
 router.put('/roupas/atualizar/:id_clothes', clientController.updateClothes); //atualizar usuário
 
-//rota reset
-router.post('/api/reset', clientController.getEmailReset); 
+//rota reset 
 router.post('/api/resetpassword', clientController.resetPassword); 
 
 module.exports = router;
