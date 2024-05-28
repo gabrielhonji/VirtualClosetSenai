@@ -84,7 +84,7 @@ export default function Login({ navigation }) {
           </Box>
           <Center h='20%' mb='5%'>
             <Button size="md" w='80%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
-              <ButtonText color='#F5F0F6'>Entre</ButtonText>
+              <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Home')}>Entre</ButtonText>
             </Button>
           </Center>
           <Center h='10%'>
