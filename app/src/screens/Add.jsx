@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 // Path to save the images
 const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
@@ -74,8 +75,9 @@ export default function Add({ navigation }) {
     <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%'}}>
       <Box h='94%' w='84%' py='$10' ml='8%'>
         <Box h='40%' mb='$5'>
-          {imagePath ? (
-                <Button w='100%' h='100%' variant="link" onPress={shootImage}>
+          <HideWithKeyboard>
+            {imagePath ? (
+            <Button w='100%' h='100%' variant="link" onPress={shootImage}>
                   <Image borderWidth={2} borderColor="#5c433f" w='100%' h='$full' alt='Cloth image' borderRadius="$xl" source={{ uri: `file://${imagePath}` }}/>
                 </Button>
               ) : (
@@ -83,6 +85,7 @@ export default function Add({ navigation }) {
                   <Center><ButtonText color='#F5F0F6'>Adicionar foto da peça</ButtonText></Center>
                 </Button>
               )}
+            </HideWithKeyboard>
         </Box>
         <Box h='40%' mb='$12'>
           <Box h='40%' mb='$1'>
