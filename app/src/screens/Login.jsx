@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
+
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +15,44 @@ export default function Login({ navigation }) {
     })
   }
 
+  const handleLogin = async () =>{
+      //verificar se os campos foram preenchidos 
+      if(!email || !password){
+          Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+          return
+      }
+      try{
+          //Objetivo para enviar para a API
+          const data = {
+              email:email,
+              password:password
+          }
+
+          //enviar os dados para a API
+          const response = await axios.post('http://10.0.2.2:8085/user/validate',data);
+
+          //verificar se o login foi efetuado com sucesso
+          if(response.status === 200){
+              setEmail('');
+              setPassword('');
+
+              navigation.navigate('Inicio');
+          }
+          else{
+              Alert.alert('Erro', `Email ou senha incorretos.Por favor tentar novamente ${error}`);
+          }
+      }
+      catch(error){
+            if(error.response && error.response.status === 401){
+              Alert.alert('Erro','ocorreu um erro ao fazer o login.Tente novamente');
+            }
+            else{
+              Alert.alert('Erro', `Email ou senha incorretos.Por favor tentar novamente ${error}`)
+            }
+      }
+    
+  }
+  
   return (
     <SafeAreaView bg='#1E1716' flex={1}>
       <KeyboardAwareScrollView>

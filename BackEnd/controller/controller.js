@@ -37,6 +37,8 @@ const userController = {
     createNewUser: async (req, res) => {
         const { id, name, email, password } = req.body;
 
+        console.log(req.body);
+
         try {
             const sql = await clientController.getByEmail(email);
 
