@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
+import {ScrollView, KeyboardAvoidingView} from 'react-native';
 
 // Path to save the images
 const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
@@ -70,7 +71,7 @@ export default function Add({ navigation }) {
 
   return (
     <SafeAreaView bg='#1E1716' flex={1}>
-      {/* <KeyboardAwareScrollView> */}
+      <KeyboardAwareScrollView contentContainerStyle={{flex: 1, height: '100%'}}>
         <Box h='94%' w='84%' py='10%' ml='8%'>
           <Box h='40%' mb='5%'>
             {imagePath ? (
@@ -79,7 +80,7 @@ export default function Add({ navigation }) {
                   </Button>
                 ) : (
                   <Button w='100%' h='100%' variant="outline" borderRadius="$xl" onPress={shootImage} borderColor="#c3c3c375">
-                    <Center><ButtonText color='#F5F0F6'>Foto da Roupa</ButtonText></Center>
+                    <Center><ButtonText color='#F5F0F6'>Adicionar foto da peça</ButtonText></Center>
                   </Button>
                 )}
           </Box>
@@ -130,7 +131,7 @@ export default function Add({ navigation }) {
               </Button>
           </HStack>
         </Box>
-      {/* </KeyboardAwareScrollView> */}
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 }
