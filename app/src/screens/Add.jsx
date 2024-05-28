@@ -70,8 +70,8 @@ export default function Add({ navigation }) {
   };
 
   return (
-    <SafeAreaView bg='#1E1716' flex={1}>
-      <KeyboardAwareScrollView contentContainerStyle={{flex: 1, height: '100%'}}>
+    // <SafeAreaView  flex={1}>
+      <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%',}}>
         <Box h='94%' w='84%' py='10%' ml='8%'>
           <Box h='40%' mb='5%'>
             {imagePath ? (
@@ -132,6 +132,6 @@ export default function Add({ navigation }) {
           </HStack>
         </Box>
       </KeyboardAwareScrollView>
-    </SafeAreaView>
+    // </SafeAreaView>
   );
 }
