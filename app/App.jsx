@@ -7,7 +7,7 @@ import StartNavigator from './src/screens/Navigator';
 export default function App() {
   return (
     <GluestackUIProvider config={config}>
-          <StartNavigator />
+      <StartNavigator />
     </GluestackUIProvider>
   );
 }

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, ButtonText, SafeAreaView } from '@gluestack-ui/themed';
+import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, ButtonText, SafeAreaView, KeyboardAvoidingView } from '@gluestack-ui/themed';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
 import { Alert } from 'react-native';
@@ -106,20 +105,30 @@ export default function Add({ navigation }) {
   
 
   return (
-    // <SafeAreaView  flex={1}>
-      <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%',}}>
-        <Box h='94%' w='84%' py='10%' ml='8%'>
-          <Box h='40%' mb='5%'>
-            {imagePath ? (
-                  <Button w='100%' h='100%' variant="link" onPress={shootImage}>
-                    <Image borderWidth={2} borderColor="#5c433f" w='100%' h='$full' alt='Cloth image' borderRadius="$xl" source={{ uri: `file://${imagePath}` }}/>
-                  </Button>
-                ) : (
-                  <Button w='100%' h='100%' variant="outline" borderRadius="$xl" onPress={shootImage} borderColor="#c3c3c375">
-                    <Center><ButtonText color='#F5F0F6'>Adicionar foto da peça</ButtonText></Center>
-                  </Button>
-                )}
+    // <SafeAreaView bg='#1E1716' flex={1}>
+    <KeyboardAvoidingView bg='#1E1716' flex={1} behavior={'position'}>
+    {/* <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%'}}> */}
+      <Box h='94%' w='84%' py='$10' ml='8%'>
+        <Box h='40%' mb='$5'>
+          {imagePath ? (
+                <Button w='100%' h='100%' variant="link" onPress={shootImage}>
+                  <Image borderWidth={2} borderColor="#5c433f" w='100%' h='$full' alt='Cloth image' borderRadius="$xl" source={{ uri: `file://${imagePath}` }}/>
+                </Button>
+              ) : (
+                <Button w='100%' h='100%' variant="outline" borderRadius="$xl" onPress={shootImage} borderColor="#c3c3c375">
+                  <Center><ButtonText color='#F5F0F6'>Adicionar foto da peça</ButtonText></Center>
+                </Button>
+              )}
+        </Box>
+        <Box h='40%' mb='$12'>
+          <Box h='40%' mb='$1'>
+            <FormControl isRequired={true}>
+              <Input bg='#2D2221' borderWidth={0} h='$16'>
+                <InputField type="text" placeholder="Nome da peça:" onChangeText={value => setClothName()} color='#F5F0F6'/>
+              </Input>
+            </FormControl>
           </Box>
+<<<<<<< HEAD
           <Box h='40%' mb='15%'>
             <Box h='40%'>
               <FormControl isRequired={true}>
@@ -165,9 +174,49 @@ export default function Add({ navigation }) {
               <Button onPress={handleState} size="md" w='20%' h='$16' variant="solid" bg={isFavorite ? '#654E4D' : '#2D2221'} isDisabled={false} isFocusVisible={false} borderRadius="$xl">
                 <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} color={isFavorite ? '#fff' : '#B2AEB2'} size={20}/>
               </Button>
+=======
+          <HStack h='30%' space='lg' reversed={false} mb='$2'>
+            <FormControl w='65%'>
+              <Input bg='#2D2221' borderWidth={0} h='$14' >
+                <InputField type="text" placeholder="Descrição:" onChangeText={value => setClothDesc()} color='#F5F0F6'/>
+              </Input>
+            </FormControl>
+            <FormControl w='30%'>
+              <Input bg='#2D2221' borderWidth={0} h='$14' >
+                <InputField type="text" placeholder="Tamanho:" onChangeText={value => setClothSize()} color='#F5F0F6'/>
+              </Input>
+            </FormControl>
+          </HStack>
+          <HStack h='30%' space="lg" reversed={false}>
+            <FormControl isRequired={true} w='35%'>
+              <Input bg='#2D2221' borderWidth={0} h='$14' >
+                <InputField type="text" placeholder="Estilo:" onChangeText={value => setClothStyle()} color='#F5F0F6'/>
+              </Input>
+            </FormControl>
+            <FormControl isRequired={true} w='25.5%'>
+              <Input bg='#2D2221' borderWidth={0} h='$14' >
+                <InputField type="text" placeholder="Cor:" onChangeText={value => setClothColor()} color='#F5F0F6'/>
+              </Input>
+            </FormControl>
+            <FormControl w='30%'>
+              <Input bg='#2D2221' borderWidth={0} h='$14' >
+                <InputField type="text" placeholder="Tags:" onChangeText={value => setClothTag()} color='#F5F0F6'/>
+              </Input>
+            </FormControl>
+>>>>>>> 85393fbe6b73fb20606f05924b71ab754b563885
           </HStack>
         </Box>
-      </KeyboardAwareScrollView>
+        <HStack h='15%' space="lg" reversed={false} justifyContent="center">
+          <Button size="md" w='55%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
+            <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Closet')}>Adicionar ao closet</ButtonText>
+          </Button>
+          <Button onPress={handleState} size="md" w='20%' h='$16' variant="solid" bg={isFavorite ? '#654E4D' : '#2D2221'} isDisabled={false} isFocusVisible={false} borderRadius="$xl">
+            <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} color={isFavorite ? '#fff' : '#B2AEB2'} size={20}/>
+          </Button>
+        </HStack>
+      </Box>
+    {/* </KeyboardAwareScrollView> */}
+    </KeyboardAvoidingView>
     // </SafeAreaView>
   );
 }
