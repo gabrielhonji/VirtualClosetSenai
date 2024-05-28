@@ -61,7 +61,7 @@ export function HomeNavigator({ navigation }) {
                 }
             })}>
                 <Tab.Screen name="Closet" component={Closet} />
-                <Tab.Screen name="RandFit" component={RandFit} />
+                {/* <Tab.Screen name="RandFit" component={RandFit} /> */}
                 <Tab.Screen name="Add" component={Add} />
             </Tab.Navigator>
         </Box>

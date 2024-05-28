@@ -17,10 +17,6 @@ import com.rnfs.RNFSPackage;
 import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 // react-native-image-picker
 import com.imagepicker.ImagePickerPackage;
-// react-native-keyboard-controller
-import com.reactnativekeyboardcontroller.KeyboardControllerPackage;
-// react-native-reanimated
-import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
@@ -77,8 +73,6 @@ public class PackageList {
       new RNFSPackage(),
       new RNGestureHandlerPackage(),
       new ImagePickerPackage(),
-      new KeyboardControllerPackage(),
-      new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
       new SvgPackage(),

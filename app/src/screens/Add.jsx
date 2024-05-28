@@ -3,6 +3,7 @@ import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, But
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 // Path to save the images
 const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
@@ -69,8 +70,8 @@ export default function Add({ navigation }) {
 
   return (
     // <SafeAreaView bg='#1E1716' flex={1}>
-    <KeyboardAvoidingView bg='#1E1716' flex={1} behavior={'position'}>
-    {/* <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%'}}> */}
+    // <KeyboardAvoidingView bg='#1E1716' flex={1} behavior={'height'}>
+    <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%'}}>
       <Box h='94%' w='84%' py='$10' ml='8%'>
         <Box h='40%' mb='$5'>
           {imagePath ? (
@@ -130,8 +131,8 @@ export default function Add({ navigation }) {
           </Button>
         </HStack>
       </Box>
-    {/* </KeyboardAwareScrollView> */}
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
+    // </KeyboardAvoidingView>
     // </SafeAreaView>
   );
 }
