@@ -106,7 +106,7 @@ const userController = {
             console.log(sql);
 
             if(sql.length > 0 && sql[0].password === password){
-                res.status(200).json({msg:"Email e senha validados com sucesso!!!"})
+                res.status(200).json(sql[0])
             }
             else{
                 res.status(401).json({msg:"email ou senha incorretos"});

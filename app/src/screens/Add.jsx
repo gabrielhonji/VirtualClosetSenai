@@ -4,6 +4,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
+import { Alert } from 'react-native';
+import axios from 'axios';
 
 // Path to save the images
 const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
@@ -30,6 +32,38 @@ export default function Add({ navigation }) {
   const handleState = () => {
     setFavorite(!isFavorite);
   }
+
+  const handleCadastro = async () => {
+
+    //verificar se os campos foram preenchidos 
+    if (clothName === "" || clothDesc === "" || clothStyle ==="" || clothSize ==="" || clothColor  ==="" || clothTag  ===""   ) {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return
+    }
+
+    const data = {
+      name: clothName,
+      descripction : clothDesc,
+      type_id_type : clothStyle,
+      size_id_size : clothSize,
+      color_id_color : clothColor,
+      tag_id_tag : clothTag
+    }
+
+    console.log(data);
+    try {
+      await axios.post('http://10.0.2.2:8085/roupas/cadastrar', data);
+      Alert.alert('Cadastro realizado com sucesso');
+      navigation.navigate('Home');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+
+
 
   useEffect(() => {
     const loadImages = async () => {
@@ -68,6 +102,9 @@ export default function Add({ navigation }) {
     });
   };
 
+
+  
+
   return (
     // <SafeAreaView  flex={1}>
       <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%',}}>
@@ -87,42 +124,42 @@ export default function Add({ navigation }) {
             <Box h='40%'>
               <FormControl isRequired={true}>
                 <Input bg='#2D2221' borderWidth={0} h='$16' >
-                  <InputField type="text" placeholder="Nome da peça:" onChangeText={value => setClothName()} color='#F5F0F6'/>
+                  <InputField type="text" placeholder="Nome da peça:" onChangeText={value => setClothName(value)} color='#F5F0F6'/>
                 </Input>
               </FormControl>
             </Box>
             <HStack h='30%' space="lg" reversed={false} mb='2%'>
               <FormControl w='65%'>
                 <Input bg='#2D2221' borderWidth={0} h='$14' >
-                  <InputField type="text" placeholder="Descrição:" onChangeText={value => setClothDesc()} color='#F5F0F6'/>
+                  <InputField type="text" placeholder="Descrição:" onChangeText={value => setClothDesc(value)} color='#F5F0F6'/>
                 </Input>
               </FormControl>
               <FormControl w='30%'>
                 <Input bg='#2D2221' borderWidth={0} h='$14' >
-                  <InputField type="text" placeholder="Tamanho:" onChangeText={value => setClothSize()} color='#F5F0F6'/>
+                  <InputField type="text" placeholder="Tamanho:" onChangeText={value => setClothSize(value)} color='#F5F0F6'/>
                 </Input>
               </FormControl>
             </HStack>
             <HStack h='30%' space="lg" reversed={false}>
               <FormControl isRequired={true} w='35%'>
                 <Input bg='#2D2221' borderWidth={0} h='$14' >
-                  <InputField type="text" placeholder="Estilo:" onChangeText={value => setClothStyle()} color='#F5F0F6'/>
+                  <InputField type="text" placeholder="Estilo:" onChangeText={value => setClothStyle(value)} color='#F5F0F6'/>
                 </Input>
               </FormControl>
               <FormControl isRequired={true} w='25.5%'>
                 <Input bg='#2D2221' borderWidth={0} h='$14' >
-                  <InputField type="text" placeholder="Cor:" onChangeText={value => setClothColor()} color='#F5F0F6'/>
+                  <InputField type="text" placeholder="Cor:" onChangeText={value => setClothColor(value)} color='#F5F0F6'/>
                 </Input>
               </FormControl>
               <FormControl w='30%'>
                 <Input bg='#2D2221' borderWidth={0} h='$14' >
-                  <InputField type="text" placeholder="Tags:" onChangeText={value => setClothTag()} color='#F5F0F6'/>
+                  <InputField type="text" placeholder="Tags:" onChangeText={value => setClothTag(value)} color='#F5F0F6'/>
                 </Input>
               </FormControl>
             </HStack>
           </Box>
           <HStack h='15%' space="lg" reversed={false} justifyContent="center">
-              <Button size="md" w='55%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
+              <Button size="md" w='55%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl" onPress={(handleCadastro)}>
                 <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Closet')}>Adicionar ao closet</ButtonText>
               </Button>
               <Button onPress={handleState} size="md" w='20%' h='$16' variant="solid" bg={isFavorite ? '#654E4D' : '#2D2221'} isDisabled={false} isFocusVisible={false} borderRadius="$xl">

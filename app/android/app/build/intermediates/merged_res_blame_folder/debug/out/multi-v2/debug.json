@@ -3405,6 +3405,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Aluno\\Desktop\\novo VIrtual\\VirtualClosetSenai\\app\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "51",
+                        "endOffsets": "64"
+                    },
+                    "to": {
+                        "startLines": "1532",
+                        "startColumns": "4",
+                        "startOffsets": "94877",
+                        "endColumns": "51",
+                        "endOffsets": "94924"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\378d88de2fde0e29d92543d12e33b34a\\transformed\\jetified-viewpager2-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -3481,25 +3498,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Aluno\\Desktop\\2024\\github\\VirtualClosetSenai\\app\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "57",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "273"
-                    },
-                    "to": {
-                        "startLines": "1705",
-                        "startColumns": "4",
-                        "startOffsets": "115917",
-                        "endLines": "1708",
-                        "endColumns": "12",
-                        "endOffsets": "116095"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\cf8c141c143f512e5d69201abc198297\\transformed\\lifecycle-runtime-2.4.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -3514,6 +3512,23 @@
                         "startOffsets": "88944",
                         "endColumns": "42",
                         "endOffsets": "88982"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Aluno\\Desktop\\novo VIrtual\\VirtualClosetSenai\\app\\android\\app\\build\\generated\\res\\resValues\\debug\\values\\gradleResValues.xml",
+                    "from": {
+                        "startLines": "6,8",
+                        "startColumns": "4,4",
+                        "startOffsets": "159,265",
+                        "endColumns": "63,68",
+                        "endOffsets": "218,329"
+                    },
+                    "to": {
+                        "startLines": "1495,1496",
+                        "startColumns": "4,4",
+                        "startOffsets": "92275,92339",
+                        "endColumns": "63,68",
+                        "endOffsets": "92334,92403"
                     }
                 },
                 {
@@ -3589,23 +3604,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Aluno\\Desktop\\2024\\github\\VirtualClosetSenai\\app\\android\\app\\build\\generated\\res\\resValues\\debug\\values\\gradleResValues.xml",
-                    "from": {
-                        "startLines": "6,8",
-                        "startColumns": "4,4",
-                        "startOffsets": "159,265",
-                        "endColumns": "63,68",
-                        "endOffsets": "218,329"
-                    },
-                    "to": {
-                        "startLines": "1495,1496",
-                        "startColumns": "4,4",
-                        "startOffsets": "92275,92339",
-                        "endColumns": "63,68",
-                        "endOffsets": "92334,92403"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\b2c399022120a5a16a836a433ff38c79\\transformed\\jetified-autofill-1.1.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,19,20,27,32,37,44,53",
@@ -3661,23 +3659,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Aluno\\Desktop\\2024\\github\\VirtualClosetSenai\\app\\android\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "17",
-                        "endColumns": "51",
-                        "endOffsets": "64"
-                    },
-                    "to": {
-                        "startLines": "1532",
-                        "startColumns": "4",
-                        "startOffsets": "94877",
-                        "endColumns": "51",
-                        "endOffsets": "94924"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\c89beba49bda3c7ff0db4787685e5ed7\\transformed\\jetified-react-android-0.72.3-debug\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,80,84,88,91,95,99,102,105,106,107,116,123,130,133,136,139,145",
@@ -3713,6 +3694,25 @@
                         "endLines": "10837",
                         "endColumns": "24",
                         "endOffsets": "653070"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Aluno\\Desktop\\novo VIrtual\\VirtualClosetSenai\\app\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "273"
+                    },
+                    "to": {
+                        "startLines": "1705",
+                        "startColumns": "4",
+                        "startOffsets": "115917",
+                        "endLines": "1708",
+                        "endColumns": "12",
+                        "endOffsets": "116095"
                     }
                 }
             ]

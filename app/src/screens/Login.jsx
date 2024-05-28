@@ -43,6 +43,8 @@ export default function Login({ navigation }) {
               setEmail('');
               setPassword('');
 
+              console.log(response.data);
+
               navigation.navigate('Home');
           }
           else{
