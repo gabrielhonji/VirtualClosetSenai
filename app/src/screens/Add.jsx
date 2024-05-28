@@ -4,7 +4,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
-import {ScrollView, KeyboardAvoidingView} from 'react-native';
 
 // Path to save the images
 const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
@@ -70,8 +69,8 @@ export default function Add({ navigation }) {
   };
 
   return (
-    <SafeAreaView bg='#1E1716' flex={1}>
-      <KeyboardAwareScrollView contentContainerStyle={{flex: 1, height: '100%'}}>
+    // <SafeAreaView  flex={1}>
+      <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%',}}>
         <Box h='94%' w='84%' py='10%' ml='8%'>
           <Box h='40%' mb='5%'>
             {imagePath ? (
@@ -124,7 +123,7 @@ export default function Add({ navigation }) {
           </Box>
           <HStack h='15%' space="lg" reversed={false} justifyContent="center">
               <Button size="md" w='55%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
-                <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Home')}>Adicionar ao closet</ButtonText>
+                <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Closet')}>Adicionar ao closet</ButtonText>
               </Button>
               <Button onPress={handleState} size="md" w='20%' h='$16' variant="solid" bg={isFavorite ? '#654E4D' : '#2D2221'} isDisabled={false} isFocusVisible={false} borderRadius="$xl">
                 <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} color={isFavorite ? '#fff' : '#B2AEB2'} size={20}/>
@@ -132,6 +131,6 @@ export default function Add({ navigation }) {
           </HStack>
         </Box>
       </KeyboardAwareScrollView>
-    </SafeAreaView>
+    // </SafeAreaView>
   );
 }

@@ -18,7 +18,7 @@ import RandFit from './RandFit';
 export function HomeNavigator() {
     return (
         <Box bg='#1E1716' h='100%'>
-            <Tab.Navigator backBehavior='history' initialRouteName='Add' screenOptions={({route}) => ({
+            <Tab.Navigator backBehavior='history' initialRouteName='Closet' screenOptions={({route}) => ({
                 tabBarIcon: ({ focused }) => {
                     let iconName;
                     let iconSize;
