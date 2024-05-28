@@ -15,7 +15,7 @@ import Add from './Add';
 import Closet from './Closet';
 import RandFit from './RandFit';
 
-export function HomeNavigator() {
+export function HomeNavigator({ navigation }) {
     return (
         <Box bg='#1E1716' h='100%'>
             <Tab.Navigator backBehavior='history' initialRouteName='Closet' screenOptions={({route}) => ({
@@ -68,7 +68,7 @@ export function HomeNavigator() {
     );
 }
 
-export default function StartNavigator() {
+export default function StartNavigator({ navigation }) {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
