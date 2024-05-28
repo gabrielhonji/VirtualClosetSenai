@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 #Tue May 28 13:46:41 BRT 2024
+=======
+<<<<<<< HEAD
+#Tue May 28 08:42:08 BRT 2024
+=======
+#Tue May 28 08:40:02 BRT 2024
+>>>>>>> 4ffe3eadea1319722ac7e84feda1c329e2633f94
+>>>>>>> 1c8518a69c9a46d9b9f7ecfd07376658f4b02579
 path.4=3/classes.dex
 path.3=14/classes.dex
 path.2=0/classes.dex

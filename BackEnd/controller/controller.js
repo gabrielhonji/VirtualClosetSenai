@@ -335,14 +335,19 @@ const userController = {
 
      resetPassword: async (req,res) =>{
         let {email,password} = req.body
-
-        console.log(req.body);
-
         email = email.toLowerCase();
 
+        const sql = await clientController.getByEmail(email);
+        
         try{
-            await clientController.updatePassword(email,password);
+            if(sql.length > 0){
+                await clientController.updatePassword(email,password);
             res.status(200).json({msg:"senha atualizada com sucesso"});
+            }
+            else{
+                res.status(401).json({msg: "O email não existe na base de dados"})
+            }          
+        
         }
         catch(error){
             console.log("erro ao redefinir a senha");

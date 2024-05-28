@@ -1,7 +1,9 @@
 import { Image, Box, Text, Heading, Center, FormControl, Input, InputField, InputSlot, Button, ButtonText, SafeAreaView } from '@gluestack-ui/themed';
 import { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Alert } from 'react-native';
+import axios from 'axios';
 
 
 export default function Login({ navigation }) {
@@ -16,10 +18,15 @@ export default function Login({ navigation }) {
   }
 
   const handleLogin = async () =>{
-      //verificar se os campos foram preenchidos 
-      if(!email || !password){
-          Alert.alert('Erro', 'Por favor, preencha todos os campos.');
-          return
+      if (!email.includes('@')) {
+      Alert.alert('Por favor, insira um email válido')
+      return
+    }
+    
+    //verificar se os campos foram preenchidos 
+      if (email === "" || password==="") {
+        Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+        return
       }
       try{
           //Objetivo para enviar para a API
@@ -36,7 +43,7 @@ export default function Login({ navigation }) {
               setEmail('');
               setPassword('');
 
-              navigation.navigate('Inicio');
+              navigation.navigate('Home');
           }
           else{
               Alert.alert('Erro', `Email ou senha incorretos.Por favor tentar novamente ${error}`);
@@ -73,7 +80,7 @@ export default function Login({ navigation }) {
               </FormControl>
               <FormControl isRequired={true} mb='$5'>
                 <Input bg='#2D2221' borderWidth={0} h='$16'>
-                  <InputField type={showPassword ? "text" : "password"}  placeholder="Senha:" onChangeText={value => setPassword()} color='#F5F0F6'/>
+                  <InputField type={showPassword ? "text" : "password"}  placeholder="Senha:" onChangeText={value => setPassword(value)} color='#F5F0F6'/>
                   <InputSlot pr="$5" onPress={handleState}>
                     <Ionicons name={showPassword ? 'eye-outline' : 'eye-off-outline'} color={showPassword ? '#F5F0F6' : '#807c80'} size={20}/>
                   </InputSlot>
@@ -83,7 +90,7 @@ export default function Login({ navigation }) {
             </Box>
           </Box>
           <Center h='20%' mb='5%'>
-            <Button size="md" w='80%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
+            <Button size="md" w='80%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl" onPress={(handleLogin)}>
               <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Home')}>Entre</ButtonText>
             </Button>
           </Center>
