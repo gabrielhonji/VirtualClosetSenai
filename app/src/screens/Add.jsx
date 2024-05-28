@@ -6,10 +6,10 @@ import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
 
 // Path to save the images
-const diretorioImagens = `${SistemaArquivos.DocumentDirectoryPath}/imagens`;
+const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
 
 // Create one if don't exist
-SistemaArquivos.mkdir(diretorioImagens).then(() => {
+SistemaArquivos.mkdir(imageDirectory).then(() => {
   console.log('Diretório criado');
 }).catch(erro => {
   console.log('Erro ao criar diretório:', erro);
@@ -23,8 +23,8 @@ export default function Add({ navigation }) {
   const [clothColor, setClothColor] = useState("");
   const [clothTag, setClothTag] = useState("");
 
-  const [caminhoImagem, setCaminhoImagem] = useState(null);
-  const [listaArquivos, setListaArquivos] = useState([]);
+  const [imagePath, setImagePath] = useState(null);
+  const [imageList, setImageList] = useState([]);
 
   const [isFavorite, setFavorite] = useState(false);
   const handleState = () => {
@@ -32,36 +32,36 @@ export default function Add({ navigation }) {
   }
 
   useEffect(() => {
-    const carregarArquivos = async () => {
+    const loadImages = async () => {
       try {
-        const resultado = await SistemaArquivos.readDir(diretorioImagens);
-        const imagens = resultado.filter(arquivo => arquivo.isFile() && ['.png', '.jpg', '.jpeg'].includes(arquivo.name.toLowerCase().slice(-4)));
-        setListaArquivos(imagens.map(arquivo => arquivo.name));
+        const result = await SistemaArquivos.readDir(imageDirectory);
+        const images = result.filter(imageFile => imageFile.isFile() && ['.png', '.jpg', '.jpeg'].includes(imageFile.name.toLowerCase().slice(-4)));
+        setImageList(images.map(imageFile => imageFile.name));
       } catch (erro) {
         console.error('Erro ao buscar arquivos', erro);
       }
     };
 
-    carregarArquivos();
+    loadImages();
   }, []);
 
-  const tirarFoto = () => {
-    const opcoes = { mediaType: 'photo' };
-    launchCamera(opcoes, (resposta) => {
-      if (resposta.didCancel) {
+  const shootImage = () => {
+    const options = { mediaType: 'photo' };
+    launchCamera(options, (answer) => {
+      if (answer.didCancel) {
         console.log('Cancelado pelo usuário');
-      } else if (resposta.errorCode) {
-        console.log('Erro da Câmera: ', resposta.errorMessage);
-      } else if (resposta.assets && resposta.assets.length > 0) {
-        const { uri } = resposta.assets[0];
+      } else if (answer.errorCode) {
+        console.log('Erro da Câmera: ', answer.errorMessage);
+      } else if (answer.assets && answer.assets.length > 0) {
+        const { uri } = answer.assets[0];
         const timestamp = new Date().toISOString().replace(/[:.-]/g, '');
-        const nomeArquivo = `imagem_${timestamp}.jpg`;
-        const caminhoDestino = `${diretorioImagens}/${nomeArquivo}`;
+        const fileName = `imagem_${timestamp}.jpg`;
+        const filePath = `${imageDirectory}/${fileName}`;
 
-        SistemaArquivos.copyFile(uri, caminhoDestino)
+        SistemaArquivos.copyFile(uri, filePath)
           .then(() => {
-            console.log('Imagem salva em:', caminhoDestino);
-            setCaminhoImagem(caminhoDestino);
+            console.log('Imagem salva em:', filePath);
+            setImagePath(filePath);
           })
           .catch(erro => console.log('Erro ao salvar a imagem:', erro));
       }
@@ -73,12 +73,12 @@ export default function Add({ navigation }) {
       {/* <KeyboardAwareScrollView> */}
         <Box h='94%' w='84%' py='10%' ml='8%'>
           <Box h='40%' mb='5%'>
-            {caminhoImagem ? (
-                  <Button w='100%' h='100%' variant="link" onPress={tirarFoto}>
-                    <Image borderWidth={2} borderColor="#5c433f" w='100%' h='$full' alt='Cloth image' borderRadius="$xl" source={{ uri: `file://${caminhoImagem}` }}/>
+            {imagePath ? (
+                  <Button w='100%' h='100%' variant="link" onPress={shootImage}>
+                    <Image borderWidth={2} borderColor="#5c433f" w='100%' h='$full' alt='Cloth image' borderRadius="$xl" source={{ uri: `file://${imagePath}` }}/>
                   </Button>
                 ) : (
-                  <Button w='100%' h='100%' variant="outline" borderRadius="$xl" onPress={tirarFoto} borderColor="#c3c3c375">
+                  <Button w='100%' h='100%' variant="outline" borderRadius="$xl" onPress={shootImage} borderColor="#c3c3c375">
                     <Center><ButtonText color='#F5F0F6'>Foto da Roupa</ButtonText></Center>
                   </Button>
                 )}
