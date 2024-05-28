@@ -4,7 +4,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
-import {ScrollView, KeyboardAvoidingView} from 'react-native';
 
 // Path to save the images
 const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
@@ -124,7 +123,7 @@ export default function Add({ navigation }) {
           </Box>
           <HStack h='15%' space="lg" reversed={false} justifyContent="center">
               <Button size="md" w='55%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
-                <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Home')}>Adicionar ao closet</ButtonText>
+                <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Closet')}>Adicionar ao closet</ButtonText>
               </Button>
               <Button onPress={handleState} size="md" w='20%' h='$16' variant="solid" bg={isFavorite ? '#654E4D' : '#2D2221'} isDisabled={false} isFocusVisible={false} borderRadius="$xl">
                 <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} color={isFavorite ? '#fff' : '#B2AEB2'} size={20}/>
