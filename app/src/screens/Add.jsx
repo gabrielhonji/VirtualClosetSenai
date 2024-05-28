@@ -26,10 +26,9 @@ export default function Add({ navigation }) {
   const [caminhoImagem, setCaminhoImagem] = useState(null);
   const [listaArquivos, setListaArquivos] = useState([]);
 
-  const [isFavorite, setFavorite] = useState(true)
+  const [isFavorite, setFavorite] = useState(false);
   const handleState = () => {
-    setFavorite(false);
-    console.log(isFavorite);
+    setFavorite(!isFavorite);
   }
 
   useEffect(() => {
@@ -85,21 +84,21 @@ export default function Add({ navigation }) {
                 )}
           </Box>
           <Box h='40%' mb='15%'>
-            <Box h='35%' mb='2%'>
+            <Box h='40%'>
               <FormControl isRequired={true}>
                 <Input bg='#2D2221' borderWidth={0} h='$16' >
                   <InputField type="text" placeholder="Nome da peça:" onChangeText={value => setClothName()} color='#F5F0F6'/>
                 </Input>
               </FormControl>
             </Box>
-            <HStack h='35%' space="lg" reversed={false} mb='2%'>
+            <HStack h='30%' space="lg" reversed={false} mb='2%'>
               <FormControl w='65%'>
-                <Input bg='#2D2221' borderWidth={0} h='$16' >
+                <Input bg='#2D2221' borderWidth={0} h='$14' >
                   <InputField type="text" placeholder="Descrição:" onChangeText={value => setClothDesc()} color='#F5F0F6'/>
                 </Input>
               </FormControl>
               <FormControl w='30%'>
-                <Input bg='#2D2221' borderWidth={0} h='$16' >
+                <Input bg='#2D2221' borderWidth={0} h='$14' >
                   <InputField type="text" placeholder="Tamanho:" onChangeText={value => setClothSize()} color='#F5F0F6'/>
                 </Input>
               </FormControl>
