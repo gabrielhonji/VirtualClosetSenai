@@ -18,7 +18,7 @@ import RandFit from './RandFit';
 export function HomeNavigator({ navigation }) {
     return (
         <Box bg='#1E1716' h='100%'>
-            <Tab.Navigator backBehavior='history' initialRouteName='Closet' screenOptions={({route}) => ({
+            <Tab.Navigator backBehavior='history' initialRouteName='Add' screenOptions={({route}) => ({
                 tabBarIcon: ({ focused }) => {
                     let iconName;
                     let iconSize;
@@ -61,7 +61,6 @@ export function HomeNavigator({ navigation }) {
                 }
             })}>
                 <Tab.Screen name="Closet" component={Closet} />
-                {/* <Tab.Screen name="RandFit" component={RandFit} /> */}
                 <Tab.Screen name="Add" component={Add} />
             </Tab.Navigator>
         </Box>
