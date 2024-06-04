@@ -112,14 +112,6 @@ export default function Add({ navigation }) {
               )}
         </Box>
         <Box h='40%' mb='$12'>
-          <Box h='40%' mb='$1'>
-            <FormControl isRequired={true}>
-              <Input bg='#2D2221' borderWidth={0} h='$16'>
-                <InputField type="text" placeholder="Nome da peça:" onChangeText={value => setClothName()} color='#F5F0F6'/>
-              </Input>
-            </FormControl>
-          </Box>
-          <Box h='40%' mb='15%'>
             <Box h='40%'>
               <FormControl isRequired={true}>
                 <Input bg='#2D2221' borderWidth={0} h='$16' >
@@ -165,15 +157,6 @@ export default function Add({ navigation }) {
                 <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} color={isFavorite ? '#fff' : '#B2AEB2'} size={20}/>
               </Button>
           </HStack>
-        </Box>
-        <HStack h='15%' space="lg" reversed={false} justifyContent="center">
-          <Button size="md" w='55%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl">
-            <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Closet')}>Adicionar ao closet</ButtonText>
-          </Button>
-          <Button onPress={handleState} size="md" w='20%' h='$16' variant="solid" bg={isFavorite ? '#654E4D' : '#2D2221'} isDisabled={false} isFocusVisible={false} borderRadius="$xl">
-            <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} color={isFavorite ? '#fff' : '#B2AEB2'} size={20}/>
-          </Button>
-        </HStack>
       </Box>
     </KeyboardAwareScrollView>
   );
