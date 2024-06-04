@@ -53,33 +53,31 @@ export default function Closet({ navigation, route }) {
         </Box>
         <Box justifyContent='center' alignItems='flex-end' h='100%' w='20%'>
           <Button onPress={() => navigation.navigate('Login')} variant='link'>
-            <Avatar size='md'>
-              <AvatarFallbackText>GH</AvatarFallbackText>
-                <AvatarImage alt='Avatar Image' source={{ uri: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"}}
-                />
+            <Avatar size='md' bg='#f2f2'>
+              <AvatarFallbackText color='#fff'>GH</AvatarFallbackText>
             </Avatar>
           </Button>
         </Box>
       </HStack>
       <ScrollView>
         <HStack w='80%'my={20} ml={'10%'} flexWrap='wrap' columnGap={'$4'} rowGap={'$4'}>
-          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link'>
-            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={{ uri: `file://${imagePath}`}}/>
+          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link' borderRadius={20}>
+            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={require("../../res/img/closet-img-1.png")}/>
           </Button>
-          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link'>
-            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={{ uri: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"}}/>
+          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link' borderRadius={20}>
+            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={require("../../res/img/closet-img-2.png")}/>
           </Button>
-          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link'>
-            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={{ uri: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"}}/>
+          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link' borderRadius={20}>
+            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={require("../../res/img/closet-img-3.png")}/>
           </Button>
-          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link'>
-            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={{ uri: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"}}/>
+          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link' borderRadius={20}>
+            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={require("../../res/img/closet-img-4.png")}/>
           </Button>
-          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link'>
-            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={{ uri: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"}}/>
+          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link' borderRadius={20}>
+            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={require("../../res/img/closet-img-5.png")}/>
           </Button>
-          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link'>
-            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={{ uri: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"}}/>
+          <Button onPress={handleState} ref={ref} p='$0'w='47%' h='$56' borderWidth={2} borderColor="#5c433f" bg='#0000000' variant='link' borderRadius={20}>
+            <Image w='100%' h='100%' alt='Cloth image' borderRadius="$sm" source={require("../../res/img/closet-img-6.png")}/>
           </Button>
         </HStack>
       </ScrollView>
@@ -105,30 +103,6 @@ export default function Closet({ navigation, route }) {
                   <InputField type="text" placeholder="Descrição:" onChangeText={value => setClothDesc()} color='#F5F0F6'/>
                 </Input>
                 </FormControl>
-                <HStack space='md'>
-                  <FormControl isRequired={true} w='48%'>
-                  <Input borderWidth={1} borderColor='#ffffff33' h='$14'>
-                    <InputField type="text" placeholder="Estilo:" onChangeText={value => setClothStyle()} color='#F5F0F6'/>
-                  </Input>
-                  </FormControl>
-                  <FormControl isRequired={true} w='48%'>
-                  <Input borderWidth={1} borderColor='#ffffff33' h='$14'>
-                    <InputField type="text" placeholder="Tamanho:" onChangeText={value => setClothSize()} color='#F5F0F6'/>
-                  </Input>
-                  </FormControl>
-                </HStack>
-                <HStack space='md'>
-                  <FormControl isRequired={true} w='48%'>
-                  <Input borderWidth={1} borderColor='#ffffff33' h='$14'>
-                    <InputField type="text" placeholder="Color:" onChangeText={value => setClothColor()} color='#F5F0F6'/>
-                  </Input>
-                  </FormControl>
-                  <FormControl isRequired={true} w='48%'>
-                  <Input borderWidth={1} borderColor='#ffffff33' h='$14'>
-                    <InputField type="text" placeholder="Tags:" onChangeText={value => setClothTag()} color='#F5F0F6'/>
-                  </Input>
-                  </FormControl>
-                </HStack>
               </VStack>
             </KeyboardAwareScrollView>
           </ModalBody>

@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, ButtonText} from '@gluestack-ui/themed';
+import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, ButtonText, Text} from '@gluestack-ui/themed';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
-import { Alert } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 import axios from 'axios';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import RNPickerSelect from 'react-native-picker-select';
 
 // Path to save the images
 const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
@@ -172,12 +173,6 @@ export default function Add({ navigation, route }){
 
   
   return (
-
-    // <KeyboardAwareScrollView enableOnAndroid={true} contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%'}}>
-    //   <Box h='94%' w='84%' py='$10' ml='8%'>
-    //     <Box h='40%' mb='$5'>
-    //         {imagePath ? (
-
     <KeyboardAwareScrollView enableOnAndroid={true} 
     contentContainerStyle={{backgroundColor: '#1E1716', minHeight: '100%'}}>
       <Box h='86%' w='84%' ml='8%' mt='10%'>
@@ -202,27 +197,47 @@ export default function Add({ navigation, route }){
                 <InputField type="text" placeholder="Descrição:" onChangeText={value => setClothDesc(value)} color='#F5F0F6'/>
               </Input>
             </FormControl>
-            <FormControl w='30%'>
-              <Input bg='#2D2221' borderWidth={0} h='$14' >
-                <InputField type="text" placeholder="Tamanho:" onChangeText={value => setClothSize(value)} color='#F5F0F6'/>
-              </Input>
+            <FormControl w='30%' bg='#2D2221' borderRadius={4} px='$2'>
+              <RNPickerSelect placeholder={{label: "Tamanho:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
+                onValueChange={(clothSize) => setClothSize(clothSize)}
+                items={[
+                    { label: "P", value: "1", itemKey: 1 },
+                    { label: "M", value: "2", itemKey: 2 },
+                    { label: "G", value: "3", itemKey: 3 },
+                ]}
+              />
             </FormControl>
           </HStack>
           <HStack space="lg" mb='$8'>
-            <FormControl isRequired={true} w='35%'>
-              <Input bg='#2D2221' borderWidth={0} h='$14' >
-                <InputField type="text" placeholder="Estilo:" onChangeText={value => setClothStyle(value)} color='#F5F0F6'/>
-              </Input>
+            <FormControl w='35%' bg='#2D2221' borderRadius={4} px='$2'>
+              <RNPickerSelect placeholder={{label: "Tipo:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
+                onValueChange={(clothStyle) => setClothStyle(clothStyle)}
+                items={[
+                    { label: "Calça", value: "1", itemKey: 1 },
+                    { label: "Short", value: "2", itemKey: 2 },
+                    { label: "Camisa", value: "3", itemKey: 3 },
+                ]}
+              />
             </FormControl>
-            <FormControl isRequired={true} w='25.5%'>
-              <Input bg='#2D2221' borderWidth={0} h='$14' >
-                <InputField type="text" placeholder="Cor:" onChangeText={value => setClothColor(value)} color='#F5F0F6'/>
-              </Input>
+            <FormControl w='25.5%' bg='#2D2221' borderRadius={4} px='$2'>
+              <RNPickerSelect placeholder={{label: "Cor:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
+                onValueChange={(clothColor) => setClothColor(clothColor)}
+                items={[
+                    { label: "Azul", value: "1", itemKey: 1 },
+                    { label: "Verde", value: "2", itemKey: 2 },
+                    { label: "Vermelho", value: "3", itemKey: 3 },
+                ]}
+              />
             </FormControl>
-            <FormControl w='30%'>
-              <Input bg='#2D2221' borderWidth={0} h='$14' >
-                <InputField type="text" placeholder="Tags:" onChangeText={value => setClothTag(value)} color='#F5F0F6'/>
-              </Input>
+            <FormControl w='30%' bg='#2D2221' borderRadius={4} px='$2'>
+              <RNPickerSelect placeholder={{label: "Tag:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
+                onValueChange={(clothColor) => setClothColor(clothColor)}
+                items={[
+                    { label: "Verão", value: "1", itemKey: 1 },
+                    { label: "Inverno", value: "2", itemKey: 2 },
+                    { label: "Social", value: "3", itemKey: 3 },
+                ]}
+              />
             </FormControl>
           </HStack>
           <HStack space="lg" reversed={false} justifyContent="center">

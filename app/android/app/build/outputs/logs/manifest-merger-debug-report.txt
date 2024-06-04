@@ -8,6 +8,7 @@ MERGED from C:\Users\Aluno\Desktop\VirtualClosetSenai\app\android\app\src\main\A
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.182.0] C:\Users\Aluno\.gradle\caches\transforms-3\e47626a30834dcd66576d826bae55315\transformed\jetified-flipper-network-plugin-0.182.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.182.0] C:\Users\Aluno\.gradle\caches\transforms-3\927874504f02e490d8ef5fc541319ddd\transformed\jetified-flipper-fresco-plugin-0.182.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper:0.182.0] C:\Users\Aluno\.gradle\caches\transforms-3\e13f88164840fe641a466d05cd8edac7\transformed\jetified-flipper-0.182.0\AndroidManifest.xml:8:1-18:12
+MERGED from [:react-native-picker_picker] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\@react-native-picker\picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-fs] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-fs\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-gesture-handler] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-image-picker] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-19:12
@@ -15,8 +16,8 @@ MERGED from [:react-native-safe-area-context] C:\Users\Aluno\Desktop\VirtualClos
 MERGED from [:react-native-screens] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-svg] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-vector-icons] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [com.facebook.react:react-android:0.72.3] C:\Users\Aluno\.gradle\caches\transforms-3\c89beba49bda3c7ff0db4787685e5ed7\transformed\jetified-react-android-0.72.3-debug\AndroidManifest.xml:2:1-7:12
-MERGED from [com.facebook.react:hermes-android:0.72.3] C:\Users\Aluno\.gradle\caches\transforms-3\430a607cf6d546758ce98bd168677a7b\transformed\jetified-hermes-android-0.72.3-debug\AndroidManifest.xml:2:1-7:12
+MERGED from [com.facebook.react:react-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\149427f2a5f25fe0622d490f613a8d8c\transformed\jetified-react-android-0.72.14-debug\AndroidManifest.xml:2:1-7:12
+MERGED from [com.facebook.react:hermes-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\71a8f49848f651d12bee81faaa220ea9\transformed\jetified-hermes-android-0.72.14-debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.5.0] C:\Users\Aluno\.gradle\caches\transforms-3\463b085172aadec89519c358dac4e9e6\transformed\jetified-imagepipeline-okhttp3-2.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.core:core-ktx:1.8.0] C:\Users\Aluno\.gradle\caches\transforms-3\c0b31b00541fbf5f57beeb3d5363f6b5\transformed\jetified-core-ktx-1.8.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.android.ndk.thirdparty:openssl:1.1.1l-beta-1] C:\Users\Aluno\.gradle\caches\transforms-3\9aee53ed1b97b29f8fa14a865487ca10\transformed\jetified-openssl-1.1.1l-beta-1\AndroidManifest.xml:1:1-3:12
@@ -199,6 +200,8 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.182.0] C:\Users\Aluno\
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.182.0] C:\Users\Aluno\.gradle\caches\transforms-3\927874504f02e490d8ef5fc541319ddd\transformed\jetified-flipper-fresco-plugin-0.182.0\AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper:0.182.0] C:\Users\Aluno\.gradle\caches\transforms-3\e13f88164840fe641a466d05cd8edac7\transformed\jetified-flipper-0.182.0\AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper:0.182.0] C:\Users\Aluno\.gradle\caches\transforms-3\e13f88164840fe641a466d05cd8edac7\transformed\jetified-flipper-0.182.0\AndroidManifest.xml:11:5-13:41
+MERGED from [:react-native-picker_picker] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\@react-native-picker\picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-picker_picker] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\@react-native-picker\picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-fs] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-fs\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-fs] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-fs\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-gesture-handler] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
@@ -213,10 +216,10 @@ MERGED from [:react-native-svg] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\no
 MERGED from [:react-native-svg] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-vector-icons] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-vector-icons] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [com.facebook.react:react-android:0.72.3] C:\Users\Aluno\.gradle\caches\transforms-3\c89beba49bda3c7ff0db4787685e5ed7\transformed\jetified-react-android-0.72.3-debug\AndroidManifest.xml:5:5-44
-MERGED from [com.facebook.react:react-android:0.72.3] C:\Users\Aluno\.gradle\caches\transforms-3\c89beba49bda3c7ff0db4787685e5ed7\transformed\jetified-react-android-0.72.3-debug\AndroidManifest.xml:5:5-44
-MERGED from [com.facebook.react:hermes-android:0.72.3] C:\Users\Aluno\.gradle\caches\transforms-3\430a607cf6d546758ce98bd168677a7b\transformed\jetified-hermes-android-0.72.3-debug\AndroidManifest.xml:5:5-44
-MERGED from [com.facebook.react:hermes-android:0.72.3] C:\Users\Aluno\.gradle\caches\transforms-3\430a607cf6d546758ce98bd168677a7b\transformed\jetified-hermes-android-0.72.3-debug\AndroidManifest.xml:5:5-44
+MERGED from [com.facebook.react:react-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\149427f2a5f25fe0622d490f613a8d8c\transformed\jetified-react-android-0.72.14-debug\AndroidManifest.xml:5:5-44
+MERGED from [com.facebook.react:react-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\149427f2a5f25fe0622d490f613a8d8c\transformed\jetified-react-android-0.72.14-debug\AndroidManifest.xml:5:5-44
+MERGED from [com.facebook.react:hermes-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\71a8f49848f651d12bee81faaa220ea9\transformed\jetified-hermes-android-0.72.14-debug\AndroidManifest.xml:5:5-44
+MERGED from [com.facebook.react:hermes-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\71a8f49848f651d12bee81faaa220ea9\transformed\jetified-hermes-android-0.72.14-debug\AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.5.0] C:\Users\Aluno\.gradle\caches\transforms-3\463b085172aadec89519c358dac4e9e6\transformed\jetified-imagepipeline-okhttp3-2.5.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.5.0] C:\Users\Aluno\.gradle\caches\transforms-3\463b085172aadec89519c358dac4e9e6\transformed\jetified-imagepipeline-okhttp3-2.5.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.core:core-ktx:1.8.0] C:\Users\Aluno\.gradle\caches\transforms-3\c0b31b00541fbf5f57beeb3d5363f6b5\transformed\jetified-core-ktx-1.8.0\AndroidManifest.xml:5:5-7:41

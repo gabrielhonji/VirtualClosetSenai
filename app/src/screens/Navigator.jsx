@@ -13,7 +13,6 @@ import Sign from './Sign';
 import ResetLogin from './ResetLogin';
 import Add from './Add';
 import Closet from './Closet';
-import RandFit from './RandFit';
 
 export function HomeNavigator({ navigation, route }) {
    // const teste = route.params.obj;
@@ -72,7 +71,7 @@ export function HomeNavigator({ navigation, route }) {
 export default function StartNavigator({ navigation }) {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Home" component={HomeNavigator}/>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Sign" component={Sign}/>
