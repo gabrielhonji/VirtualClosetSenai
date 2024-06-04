@@ -15,15 +15,19 @@ router.post('/user/cadastrar', clientController.createNewUser); //Cadastrar novo
 router.post('/user/validate',clientController.Login)//validar o login
 
 //router type
+router.get('/type/listar', clientController.listAllType); //Listar todos os usuários
 router.post('/type/cadastrar', clientController.createType); //Cadastrar type
 
 //router tag
+router.get('/tag/listar', clientController.listAllTag); //Listar todos os usuários
 router.post('/tag/cadastrar', clientController.createTag); //Cadastrar tag
 
 //router size
+router.get('/size/listar', clientController.listAllSize); //Listar todos os usuários
 router.post('/size/cadastrar', clientController.createSize); //Cadastrar tag
 
 //router color
+router.get('/color/listar', clientController.listAllColor); //Listar todos os usuários
 router.post('/color/cadastrar', clientController.createColor); //Cadastrar tag
 
 //router clothes

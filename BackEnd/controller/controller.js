@@ -122,6 +122,17 @@ const userController = {
 
     //table type
 
+    listAllType: async (req, res) => {
+        try {
+            const clients = await clientController.getAllType();
+            console.log(clients);
+            res.status(200).json(clients);
+        }
+        catch (error) {
+            res.status(500).json({ error: "Erro ao obter a lista de usuários" })
+        }
+    },
+
     createType: async (req, res) => {
         const { id_type, name } = req.body;
 
@@ -142,6 +153,17 @@ const userController = {
     },
 
     //table tag
+
+    listAllTag: async (req, res) => {
+        try {
+            const clients = await clientController.getAllTag();
+            console.log(clients);
+            res.status(200).json(clients);
+        }
+        catch (error) {
+            res.status(500).json({ error: "Erro ao obter a lista de usuários" })
+        }
+    },
 
     createTag: async (req, res) => {
         const { id_tag,tag} = req.body;
@@ -164,6 +186,17 @@ const userController = {
 
     //table size
 
+    listAllSize: async (req, res) => {
+        try {
+            const clients = await clientController.getAllSize();
+            console.log(clients);
+            res.status(200).json(clients);
+        }
+        catch (error) {
+            res.status(500).json({ error: "Erro ao obter a lista de usuários" })
+        }
+    },
+
     createSize: async (req, res) => {
         const { id_size,size} = req.body;
 
@@ -184,6 +217,17 @@ const userController = {
     },
 
     //table color
+
+    listAllColor: async (req, res) => {
+        try {
+            const clients = await clientController.getAllColor();
+            console.log(clients);
+            res.status(200).json(clients);
+        }
+        catch (error) {
+            res.status(500).json({ error: "Erro ao obter a lista de usuários" })
+        }
+    },
 
     createColor: async (req, res) => {
         const { id_color,name} = req.body;

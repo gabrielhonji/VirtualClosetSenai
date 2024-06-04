@@ -71,7 +71,7 @@ export function HomeNavigator({ navigation }) {
 export default function StartNavigator({ navigation }) {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Home" component={HomeNavigator}/>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Sign" component={Sign}/>

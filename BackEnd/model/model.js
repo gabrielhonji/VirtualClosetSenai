@@ -47,6 +47,12 @@ const userModel = {
 
        //model type
 
+       getAllType: async () =>{
+        const [result] = await connection.query("SELECT * FROM type")
+        .catch(erro => console.log(erro));
+        return result
+    },
+
        getByIdType: async (id_type) =>{
         const [result] = await connection.query("SELECT * FROM type WHERE id_type =?",[id_type])
         .catch(erro => console.log(erro));
@@ -60,6 +66,12 @@ const userModel = {
     },
 
      //model tag
+     
+    getAllTag: async () =>{
+        const [result] = await connection.query("SELECT * FROM tag")
+        .catch(erro => console.log(erro));
+        return result
+    },
 
      getByIdTag: async (id_tag) =>{
         const [result] = await connection.query("SELECT * FROM tag WHERE id_tag =?",[id_tag])
@@ -75,6 +87,12 @@ const userModel = {
 
     //model size
 
+    getAllSize: async () =>{
+        const [result] = await connection.query("SELECT * FROM size")
+        .catch(erro => console.log(erro));
+        return result
+    },
+
     getByIdSize: async (id_size) =>{
         const [result] = await connection.query("SELECT * FROM size WHERE id_size =?",[id_size])
         .catch(erro => console.log(erro));
@@ -88,6 +106,12 @@ const userModel = {
     },
 
     //model color
+
+    getAllColor: async () =>{
+        const [result] = await connection.query("SELECT * FROM color")
+        .catch(erro => console.log(erro));
+        return result
+    },
 
     getByIdColor: async (id_color) =>{
         const [result] = await connection.query("SELECT * FROM color WHERE id_color =?",[id_color])

@@ -2,9 +2,12 @@ import React from 'react';
 import { Image, Box, Heading, FormControl, Input, InputField, Button, ButtonText, SafeAreaView, ScrollView, HStack, VStack, Avatar, AvatarFallbackText, AvatarImage, Modal, ModalBackdrop, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter  } from '@gluestack-ui/themed';
 import { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Alert } from 'react-native';
+import axios from 'axios';
 
 export default function Closet({ navigation }) {
+  const [id, setId] = useState("");
   const [clothName, setClothName] = useState("");
   const [clothDesc, setClothDesc] = useState("");
   const [clothStyle, setClothStyle] = useState("");
@@ -24,6 +27,22 @@ export default function Closet({ navigation }) {
     setFavorite(!isFavorite);
   }
   const ref = React.useRef(null)
+
+  const handleDelete = () => {
+    axios.delete(`http://10.0.2.2:8085/roupas/deletar/${id_clothes}`)
+        .then(response => {
+            Alert.alert('Usuário deletado com sucesso!!!');
+            setId("");
+        })
+        .catch(error => {
+            if (error.response && error.response.status === 401) {
+                Alert.alert("O ID não existe no bd");
+            }
+            else {
+                Alert.alert("Erro ao deletar o usuário");
+            }
+        });
+      }
 
   return (
     <SafeAreaView bg='#1E1716' flex={1}>
@@ -113,7 +132,7 @@ export default function Closet({ navigation }) {
             </KeyboardAwareScrollView>
           </ModalBody>
           <ModalFooter>
-            <Button variant="link" size="sm" action="secondary" mr="auto" onPress={() => {setShowModal(false)}}>
+            <Button variant="link" size="sm" action="secondary" mr="auto" onPress={handleDelete}>
               <Ionicons name='trash' color='#fff' size={20}/>
             </Button>
             <Button onPress={handleStateFavorite} size="md" w='20%' h='$16' variant="link" isDisabled={false} isFocusVisible={false} borderRadius="$xl">

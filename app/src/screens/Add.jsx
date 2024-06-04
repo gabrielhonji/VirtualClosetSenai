@@ -17,7 +17,7 @@ SistemaArquivos.mkdir(imageDirectory).then(() => {
   console.log('Erro ao criar diretório:', erro);
 });
 
-export default function Add({ navigation }) {
+export default function Add({ navigation }){
   const [clothName, setClothName] = useState("");
   const [clothDesc, setClothDesc] = useState("");
   const [clothStyle, setClothStyle] = useState("");
@@ -32,6 +32,78 @@ export default function Add({ navigation }) {
   const handleState = () => {
     setFavorite(!isFavorite);
   }
+
+  const [data, setDataType] = useState([]);
+  const [size, setSize] = useState([]);
+  const [color, setColor] = useState([]);
+  const [tag, setTag] = useState([]);
+
+
+  //recuperar informações do tipo 
+  useEffect(() => {
+    // Função para buscar dados da API
+    const fetchDataType = async () => {
+      try {
+        const response = await axios.get('http://10.0.2.2:8085/type/listar'); // Substitua pela URL da sua API
+        setDataType(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+
+    fetchDataType();
+  }, []);
+
+  //recuperar informações do style 
+  useEffect(() => {
+    // Função para buscar dados da API
+    const fetchSize = async () => {
+      try {
+        const response = await axios.get('http://10.0.2.2:8085/size/listar'); // Substitua pela URL da sua API
+        setSize(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+    fetchSize();
+  }, []);
+
+  //recuperar informações do tipo 
+  useEffect(() => {
+    // Função para buscar dados da API
+    const fetchColor = async () => {
+      try {
+        const response = await axios.get('http://10.0.2.2:8085/color/listar'); // Substitua pela URL da sua API
+        setColor(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+
+    fetchColor();
+  }, []);
+
+  //recuperar informações do tipo 
+  useEffect(() => {
+    // Função para buscar dados da API
+    const fetchTag = async () => {
+      try {
+        const response = await axios.get('http://10.0.2.2:8085/tag/listar'); // Substitua pela URL da sua API
+        setTag(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+
+    fetchTag();
+  }, []);
+
+
+  
 
   const handleCadastro = async () => {
 
@@ -98,7 +170,7 @@ export default function Add({ navigation }) {
   };
 
   return (
-    <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%'}}>
+    <KeyboardAwareScrollView enableOnAndroid={true} contentContainerStyle={{flexGrow: 1, backgroundColor: '#1E1716', minHeight: '84%'}}>
       <Box h='94%' w='84%' py='$10' ml='8%'>
         <Box h='40%' mb='$5'>
             {imagePath ? (
