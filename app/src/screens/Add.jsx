@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
-import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, ButtonText, Text} from '@gluestack-ui/themed';
+import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, ButtonText} from '@gluestack-ui/themed';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import SistemaArquivos from 'react-native-fs';
+import SistemaArquivos, {RNFS} from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
-import { Alert, StyleSheet } from 'react-native';
+import { Alert } from 'react-native';
 import axios from 'axios';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import RNPickerSelect from 'react-native-picker-select';
+
 
 // Path to save the images
 const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
@@ -115,18 +116,28 @@ export default function Add({ navigation, route }){
       return
     }
 
+    const imageData = await RNFS.readFile(imagem.uri, 'base64');
+
+    // Configuração da requisição Axios
+    const config = {
+      headers: {
+          'Content-Type': 'application/json',
+      },
+  };
+
     const data = {
       name: clothName,
       descripction : clothDesc,
       type_id_type : clothStyle,
       size_id_size : clothSize,
       color_id_color : clothColor,
-      tag_id_tag : clothTag
+      tag_id_tag : clothTag,
+      image: imageData
     }
 
     console.log(data);
     try {
-      await axios.post('http://10.0.2.2:8085/roupas/cadastrar', data);
+      await axios.post('http://10.0.2.2:8085/roupas/cadastrar', data, config);
       Alert.alert('Cadastro realizado com sucesso');
       navigation.navigate('Home');
     } catch (error) {
