@@ -43,9 +43,9 @@ export default function Login({ navigation }) {
               setEmail('');
               setPassword('');
 
-              console.log(response.data);
+              const obj = response.data;
 
-              navigation.navigate('Home');
+              navigation.navigate('Home',{obj});
           }
           else{
               Alert.alert('Erro', `Email ou senha incorretos.Por favor tentar novamente ${error}`);

@@ -6,7 +6,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Alert } from 'react-native';
 import axios from 'axios';
 
-export default function Closet({ navigation }) {
+export default function Closet({ navigation, route }) {
+  
   const [id, setId] = useState("");
   const [clothName, setClothName] = useState("");
   const [clothDesc, setClothDesc] = useState("");

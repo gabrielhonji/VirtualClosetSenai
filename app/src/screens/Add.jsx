@@ -17,7 +17,8 @@ SistemaArquivos.mkdir(imageDirectory).then(() => {
   console.log('Erro ao criar diretório:', erro);
 });
 
-export default function Add({ navigation }){
+export default function Add({ navigation, route }){
+
   const [clothName, setClothName] = useState("");
   const [clothDesc, setClothDesc] = useState("");
   const [clothStyle, setClothStyle] = useState("");
