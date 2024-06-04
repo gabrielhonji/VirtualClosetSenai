@@ -9,16 +9,11 @@
 9        android:targetSdkVersion="33" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->C:\Users\Aluno\Desktop\novo VIrtual\VirtualClosetSenai\app\android\app\src\debug\AndroidManifest.xml:5:5-77
-11-->C:\Users\Aluno\Desktop\novo VIrtual\VirtualClosetSenai\app\android\app\src\debug\AndroidManifest.xml:5:22-75
+11-->C:\Users\Aluno\Desktop\2024\github\VirtualClosetSenai\app\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->C:\Users\Aluno\Desktop\2024\github\VirtualClosetSenai\app\android\app\src\debug\AndroidManifest.xml:5:22-75
 12    <uses-permission android:name="android.permission.INTERNET" />
-<<<<<<< HEAD
 12-->C:\Users\Aluno\Desktop\2024\github\VirtualClosetSenai\app\android\app\src\main\AndroidManifest.xml:3:5-67
 12-->C:\Users\Aluno\Desktop\2024\github\VirtualClosetSenai\app\android\app\src\main\AndroidManifest.xml:3:22-64
-=======
-12-->C:\Users\Aluno\Desktop\novo VIrtual\VirtualClosetSenai\app\android\app\src\main\AndroidManifest.xml:3:5-67
-12-->C:\Users\Aluno\Desktop\novo VIrtual\VirtualClosetSenai\app\android\app\src\main\AndroidManifest.xml:3:22-64
->>>>>>> d311433b8a3ad4b57285a0ac258440dc8319c360
 13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 13-->C:\Users\Aluno\Desktop\2024\github\VirtualClosetSenai\app\android\app\src\main\AndroidManifest.xml:4:5-79
 13-->C:\Users\Aluno\Desktop\2024\github\VirtualClosetSenai\app\android\app\src\main\AndroidManifest.xml:4:22-77
