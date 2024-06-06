@@ -15,7 +15,7 @@ import Add from './Add';
 import Closet from './Closet';
 
 export function HomeNavigator({ navigation, route }) {
-   // const teste = route.params.obj;
+   const user = route.params?.user;
     
     return (
         <Box bg='#1E1716' h='100%'>
@@ -62,7 +62,7 @@ export function HomeNavigator({ navigation, route }) {
                 }
             })}>
                 <Tab.Screen name="Closet" component={Closet} />
-                <Tab.Screen name="Add" component={Add} />
+                <Tab.Screen name="Add" component={Add} initialParams={{user:user}}/>
             </Tab.Navigator>
         </Box>
     );

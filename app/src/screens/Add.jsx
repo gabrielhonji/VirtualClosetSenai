@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, ButtonText} from '@gluestack-ui/themed';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import SistemaArquivos, {RNFS} from 'react-native-fs';
+import SistemaArquivos from 'react-native-fs';
 import { launchCamera } from 'react-native-image-picker';
 import { Alert } from 'react-native';
 import axios from 'axios';
@@ -20,6 +20,8 @@ SistemaArquivos.mkdir(imageDirectory).then(() => {
 });
 
 export default function Add({ navigation, route }){
+
+  const user = route.params?.user;
 
   const [clothName, setClothName] = useState("");
   const [clothDesc, setClothDesc] = useState("");
@@ -109,14 +111,15 @@ export default function Add({ navigation, route }){
   
 
   const handleCadastro = async () => {
-
     //verificar se os campos foram preenchidos 
-    if (clothName === "" || clothDesc === "" || clothStyle ==="" || clothSize ==="" || clothColor  ==="" || clothTag  ===""   ) {
+    if (clothName === "" || clothDesc === "" || clothStyle ==="" || clothSize ==="" || clothColor  ==="" ) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return
+    } else if ( !imagePath ) {
+      Alert.alert('Erro, insira uma imagem')
+      return
     }
-
-    const imageData = await RNFS.readFile(imagem.uri, 'base64');
+    const imageData = await SistemaArquivos.readFile(imagePath, { encoding: 'base64' });
 
     // Configuração da requisição Axios
     const config = {
@@ -132,6 +135,7 @@ export default function Add({ navigation, route }){
       size_id_size : clothSize,
       color_id_color : clothColor,
       tag_id_tag : clothTag,
+      favorite : isFavorite,
       image: imageData
     }
 
@@ -139,6 +143,7 @@ export default function Add({ navigation, route }){
     try {
       await axios.post('http://10.0.2.2:8085/roupas/cadastrar', data, config);
       Alert.alert('Cadastro realizado com sucesso');
+      Console.log(data);
       navigation.navigate('Home');
     } catch (error) {
       console.log(error);
@@ -212,9 +217,12 @@ export default function Add({ navigation, route }){
               <RNPickerSelect placeholder={{label: "Tamanho:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
                 onValueChange={(clothSize) => setClothSize(clothSize)}
                 items={[
-                    { label: "P", value: "1", itemKey: 1 },
-                    { label: "M", value: "2", itemKey: 2 },
-                    { label: "G", value: "3", itemKey: 3 },
+                    { label: "PP", value: "1", itemKey: 1 },
+                    { label: "P", value: "2", itemKey: 2 },
+                    { label: "M", value: "3", itemKey: 3 },
+                    { label: "G", value: "4", itemKey: 4 },
+                    { label: "GG", value: "5", itemKey: 5 },
+                    { label: "XG", value: "6", itemKey: 6 }
                 ]}
               />
             </FormControl>
@@ -225,8 +233,18 @@ export default function Add({ navigation, route }){
                 onValueChange={(clothStyle) => setClothStyle(clothStyle)}
                 items={[
                     { label: "Calça", value: "1", itemKey: 1 },
-                    { label: "Short", value: "2", itemKey: 2 },
-                    { label: "Camisa", value: "3", itemKey: 3 },
+                    { label: "Blusa", value: "2", itemKey: 2 },
+                    { label: "Jaqueta", value: "3", itemKey: 3 },
+                    { label: "Bermuda", value: "4", itemKey: 3 },
+                    { label: "Short", value: "5", itemKey: 3 },
+                    { label: "Saia", value: "6", itemKey: 3 },
+                    { label: "Casaco", value: "7", itemKey: 3 },
+                    { label: "Acessório", value: "8", itemKey: 3 },
+                    { label: "Sapato", value: "9", itemKey: 3 },
+                    { label: "Vestido", value: "10", itemKey: 3 },
+                    { label: "Macacão", value: "11", itemKey: 3 },
+                    { label: "Bolsa", value: "13", itemKey: 3 },
+                 
                 ]}
               />
             </FormControl>
@@ -234,26 +252,45 @@ export default function Add({ navigation, route }){
               <RNPickerSelect placeholder={{label: "Cor:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
                 onValueChange={(clothColor) => setClothColor(clothColor)}
                 items={[
-                    { label: "Azul", value: "1", itemKey: 1 },
-                    { label: "Verde", value: "2", itemKey: 2 },
+                    { label: "Rosa", value: "1", itemKey: 1 },
+                    { label: "Azul", value: "2", itemKey: 2 },
                     { label: "Vermelho", value: "3", itemKey: 3 },
+                    { label: "Preto", value: "4", itemKey: 4 },
+                    { label: "Branco", value: "5", itemKey: 5 },
+                    { label: "Verde", value: "6", itemKey: 6 },
+                    { label: "Roxo", value: "7", itemKey: 7 },
+                    { label: "Amarelo", value: "8", itemKey: 8 },
+                    { label: "Laranja", value: "9", itemKey: 9 },
+                    { label: "Cinza", value: "10", itemKey: 10 },
+                    { label: "Bege", value: "11", itemKey: 11 },
+                    { label: "Marrom", value: "12", itemKey: 12 },
+                    { label: "Estampado", value: "13", itemKey: 13 },
                 ]}
               />
             </FormControl>
             <FormControl w='30%' bg='#2D2221' borderRadius={4} px='$2'>
               <RNPickerSelect placeholder={{label: "Tag:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
-                onValueChange={(clothColor) => setClothColor(clothColor)}
+                onValueChange={(clothTag) => setClothTag(clothTag)}
                 items={[
                     { label: "Verão", value: "1", itemKey: 1 },
-                    { label: "Inverno", value: "2", itemKey: 2 },
-                    { label: "Social", value: "3", itemKey: 3 },
+                    { label: "Outono", value: "2", itemKey: 2 },
+                    { label: "Inverno", value: "3", itemKey: 3 },
+                    { label: "Primavera", value: "4", itemKey: 4 },
+                    { label: "Traje de festa", value: "5", itemKey: 5 },
+                    { label: "Jeans", value: "6", itemKey: 6 },
+                    { label: "Formal", value: "7", itemKey: 7 },
+                    { label: "Casual", value: "8", itemKey: 8 },
+                    { label: "Esportivo", value: "9", itemKey: 9 },
+                    { label: "Elegante", value: "10", itemKey: 10 },
+                    { label: "Fofo", value: "11", itemKey: 11 },
+                    { label: "Vintage", value: "12", itemKey: 12 },
                 ]}
               />
             </FormControl>
           </HStack>
           <HStack space="lg" reversed={false} justifyContent="center">
               <Button size="md" w='55%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl" onPress={(handleCadastro)}>
-                <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Closet')}>Adicionar ao closet</ButtonText>
+                <ButtonText color='#F5F0F6'>Adicionar ao closet</ButtonText>
               </Button>
               <Button onPress={handleState} size="md" w='20%' h='$16' variant="solid" bg={isFavorite ? '#654E4D' : '#2D2221'} isDisabled={false} isFocusVisible={false} borderRadius="$xl">
                 <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} color={isFavorite ? '#fff' : '#B2AEB2'} size={20}/>

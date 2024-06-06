@@ -45,7 +45,7 @@ export default function Login({ navigation }) {
 
               const obj = response.data;
 
-              navigation.navigate('Home',{obj});
+              navigation.navigate('Home',{user:response.data});
           }
           else{
               Alert.alert('Erro', `Email ou senha incorretos.Por favor tentar novamente ${error}`);

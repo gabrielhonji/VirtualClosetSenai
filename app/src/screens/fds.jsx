@@ -1,208 +1,271 @@
-import React, { useState } from 'react';
-import { View, Button, TextInput, Alert, Image, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import React, {useEffect, useState} from "react";
+import { Image, Box, HStack, Center, FormControl, Input, InputField, Button, ButtonText} from '@gluestack-ui/themed';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import SistemaArquivos, {RNFS} from 'react-native-fs';
+import { launchCamera } from 'react-native-image-picker';
+import { Alert } from 'react-native';
 import axios from 'axios';
-import RNFS from 'react-native-fs';
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import RNPickerSelect from 'react-native-picker-select';
 
-const Registro = ({ navigation }) => {
-    const [nome, setNome] = useState('');
-    const [sobrenome, setSobrenome] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [imagem, setImagem] = useState(null);
 
-    //acessar a câmera do celular
-    const handleCameraLaunch = async () => {
-        const options = {
-            mediaType: 'photo',
-        };
+// Path to save the images
+const imageDirectory = `${SistemaArquivos.DocumentDirectoryPath}/images`;
 
-        try {
-            const response = await launchCamera(options);
-            console.log('pickedFile', response);
-
-            // Verifica se a imagem foi capturada com sucesso
-            if (response.assets && response.assets.length > 0) {
-                const image = response.assets[0];
-                setImagem(image);
-            } else {
-                console.log('Nenhuma imagem capturada.');
-            }
-        } catch (error) {
-            console.error('Erro ao capturar a imagem:', error);
-        }
-    };
-
-    //Acessar a biblioteca de imagens do celular
-    const handleImageLibraryLaunch = async () => {
-        const options = {
-            mediaType: 'photo',
-        };
-
-        try {
-            const response = await launchImageLibrary(options);
-            console.log('pickedFile', response);
-
-            // Verifica se a imagem foi selecionada com sucesso
-            if (response.assets && response.assets.length > 0) {
-                const image = response.assets[0];
-                setImagem(image);
-            } else {
-                console.log('Nenhuma imagem selecionada.');
-            }
-        } catch (error) {
-            console.error('Erro ao selecionar a imagem:', error);
-        }
-    };
-
-    const limparFormulario = () => {
-        setNome('');
-        setSobrenome('');
-        setEmail('');
-        setSenha('');
-        setImagem(null);
-    };
-
-    const enviarDadosParaApi = async () => {
-        try {
-            // Verifica se os campos obrigatórios foram preenchidos
-            if (!nome || !sobrenome || !email || !senha || !imagem) {
-                Alert.alert('Todos os campos são obrigatórios.');
-                return;
-            }
-
-            // Lê o arquivo da imagem como base64
-            const imageData = await RNFS.readFile(imagem.uri, 'base64');
-
-            // Configuração da requisição Axios
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            };
-
-            // URL da sua API para enviar os dados e a imagem
-            const apiUrl = 'http://10.0.2.2:8085/api/registerImage';
-
-            // Dados a serem enviados para a API
-            const data = {
-                nome: nome,
-                sobrenome: sobrenome,
-                email: email,
-                senha: senha,
-                imagemBase64: imageData,
-            };
-
-            // Envia os dados e a imagem para a API usando Axios
-            const response = await axios.post(apiUrl, data, config);
-            console.log('Resposta da API:', response.data);
-
-            // Limpa o formulário após o envio dos dados
-            limparFormulario();
-
-            // Retorna para a página inicial
-            navigation.navigate('LoginAP');
-        } catch (error) {
-            console.error('Erro ao enviar os dados e a imagem para a API:', error);
-
-            if (error.response && error.response.status === 401) {
-                Alert.alert('E-mail já cadastrado na base de dados. Tente com um e-mail diferente.');
-            } else {
-                // Caso contrário, exibe uma mensagem genérica de erro
-                Alert.alert('Erro ao enviar os dados. Por favor, tente novamente mais tarde.');
-            }
-        }
-    };
-
-    return (
-        <KeyboardAvoidingView style={styles.container} behavior="padding">
-            <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                <View style={styles.imageContainer}>
-                    {/* Imagem centralizada no topo */}
-                    <Image
-                        source={imagem ? { uri: imagem.uri } : require('../../../res/img/logo-senai-1.png')}
-                        style={styles.image}
-                    />
-                </View>
-                <View style={styles.formContainer}>
-                    {/* Formulário de cadastro */}
-                    <TextInput
-                        placeholder="Nome"
-                        value={nome}
-                        onChangeText={(text) => setNome(text)}
-                        style={styles.input}
-                    />
-                    <TextInput
-                        placeholder="Sobrenome"
-                        value={sobrenome}
-                        onChangeText={(text) => setSobrenome(text)}
-                        style={styles.input}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Email"
-                        onChangeText={setEmail}
-                        value={email}
-                        keyboardType="email-address"
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Senha"
-                        onChangeText={setSenha}
-                        value={senha}
-                        secureTextEntry
-                    />
-                </View>
-                <View style={styles.buttonContainer}>
-                    {/* Botão da câmera na cor verde */}
-                    <Button title="Câmera" onPress={handleCameraLaunch} color="green" />
-                    {/* Botão para selecionar imagem da galeria na cor azul */}
-                    <Button title="Galeria" onPress={handleImageLibraryLaunch} color="blue" />
-                    {/* Botão de enviar na cor vermelha */}
-                    <Button title="Enviar" onPress={enviarDadosParaApi} color="red" />
-                </View>
-            </ScrollView>
-        </KeyboardAvoidingView>
-    );
-};
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    scrollViewContent: {
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    imageContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 20,
-    },
-    image: {
-        width: 200,
-        height: 200,
-        resizeMode: 'contain',
-    },
-    formContainer: {
-        width: '80%',
-        marginBottom: 20,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: 'black',
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 10,
-    },
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: '80%',
-    },
+// Create one if don't exist
+SistemaArquivos.mkdir(imageDirectory).then(() => {
+  console.log('Diretório criado');
+}).catch(erro => {
+  console.log('Erro ao criar diretório:', erro);
 });
 
-export default Registro;
+export default function Add({ navigation, route }){
+
+  const user = route.params?.user;
+
+  const [clothName, setClothName] = useState("");
+  const [clothDesc, setClothDesc] = useState("");
+  const [clothStyle, setClothStyle] = useState("");
+  const [clothSize, setClothSize] = useState("");
+  const [clothColor, setClothColor] = useState("");
+  const [clothTag, setClothTag] = useState("");
+
+  const [imagePath, setImagePath] = useState(null);
+  const [imageList, setImageList] = useState([]);
+
+  const [isFavorite, setFavorite] = useState(false);
+  const handleState = () => {
+    setFavorite(!isFavorite);
+  }
+
+  const [data, setDataType] = useState([]);
+  const [size, setSize] = useState([]);
+  const [color, setColor] = useState([]);
+  const [tag, setTag] = useState([]);
+
+
+  //recuperar informações do tipo 
+  useEffect(() => {
+    // Função para buscar dados da API
+    const fetchDataType = async () => {
+      try {
+        const response = await axios.get('http://10.0.2.2:8085/type/listar'); // Substitua pela URL da sua API
+        setDataType(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+
+    fetchDataType();
+  }, []);
+
+  //recuperar informações do style 
+  useEffect(() => {
+    // Função para buscar dados da API
+    const fetchSize = async () => {
+      try {
+        const response = await axios.get('http://10.0.2.2:8085/size/listar'); // Substitua pela URL da sua API
+        setSize(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+    fetchSize();
+  }, []);
+
+  //recuperar informações do tipo 
+  useEffect(() => {
+    // Função para buscar dados da API
+    const fetchColor = async () => {
+      try {
+        const response = await axios.get('http://10.0.2.2:8085/color/listar'); // Substitua pela URL da sua API
+        setColor(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+
+    fetchColor();
+  }, []);
+
+  //recuperar informações do tipo 
+  useEffect(() => {
+    // Função para buscar dados da API
+    const fetchTag = async () => {
+      try {
+        const response = await axios.get('http://10.0.2.2:8085/tag/listar'); // Substitua pela URL da sua API
+        setTag(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+
+    fetchTag();
+  }, []);
+
+
+  
+
+  const handleCadastro = async () => {
+
+    //verificar se os campos foram preenchidos 
+    if (clothName === "" || clothDesc === "" || clothStyle ==="" || clothSize ==="" || clothColor  ==="" || clothTag  ===""   ) {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return
+    }
+
+    const imageData = await RNFS.readFile(imagem.uri, 'base64');
+
+    // Configuração da requisição Axios
+    const config = {
+      headers: {
+          'Content-Type': 'application/json',
+      },
+  };
+
+    const data = {
+      name: clothName,
+      descripction : clothDesc,
+      type_id_type : clothStyle,
+      size_id_size : clothSize,
+      color_id_color : clothColor,
+      tag_id_tag : clothTag,
+      image: imageData
+    }
+
+    console.log(data);
+    try {
+      await axios.post('http://10.0.2.2:8085/roupas/cadastrar', data, config);
+      Alert.alert('Cadastro realizado com sucesso');
+      navigation.navigate('Home');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const loadImages = async () => {
+      try {
+        const result = await SistemaArquivos.readDir(imageDirectory);
+        const images = result.filter(imageFile => imageFile.isFile() && ['.png', '.jpg', '.jpeg'].includes(imageFile.name.toLowerCase().slice(-4)));
+        setImageList(images.map(imageFile => imageFile.name));
+      } catch (erro) {
+        console.error('Erro ao buscar arquivos', erro);
+      }
+    };
+
+    loadImages();
+  }, []);
+
+  const shootImage = () => {
+    const options = { mediaType: 'photo' };
+    launchCamera(options, (answer) => {
+      if (answer.didCancel) {
+        console.log('Cancelado pelo usuário');
+      } else if (answer.errorCode) {
+        console.log('Erro da Câmera: ', answer.errorMessage);
+      } else if (answer.assets && answer.assets.length > 0) {
+        const { uri } = answer.assets[0];
+        const timestamp = new Date().toISOString().replace(/[:.-]/g, '');
+        const fileName = `imagem_${timestamp}.jpg`;
+        const filePath = `${imageDirectory}/${fileName}`;
+
+        SistemaArquivos.copyFile(uri, filePath)
+          .then(() => {
+            console.log('Imagem salva em:', filePath);
+            setImagePath(filePath);
+          })
+          .catch(erro => console.log('Erro ao salvar a imagem:', erro));
+      }
+    });
+  };
+
+  
+  return (
+    <KeyboardAwareScrollView enableOnAndroid={true} 
+    contentContainerStyle={{backgroundColor: '#1E1716', minHeight: '100%'}}>
+      <Box h='86%' w='84%' ml='8%' mt='10%'>
+        <Box h='38%' mb='$4'>
+          {imagePath ? (
+            <Button w='100%' h='100%' variant="link" onPress={shootImage}>
+              <Image borderWidth={2} borderColor="#5c433f" w='100%' h='$full' alt='Cloth image' borderRadius="$xl" source={{ uri: `file://${imagePath}` }}/>
+            </Button>
+          ) : (
+            <Button w='100%' h='100%' variant="outline" borderRadius="$xl" onPress={shootImage} borderColor="#c3c3c375">
+              <Center><ButtonText color='#F5F0F6'>Adicionar foto da peça</ButtonText></Center>
+            </Button>
+          )}
+        </Box>
+        <Box h='60%'>
+          <Input bg='#2D2221' borderWidth={0} h='$16' mb='$4'>
+            <InputField type="text" placeholder="Nome da peça:" onChangeText={value => setClothName(value)} color='#F5F0F6'/>
+          </Input>
+          <HStack space="lg" mb='$4'>
+            <FormControl w='65%'>
+              <Input bg='#2D2221' borderWidth={0} h='$14' >
+                <InputField type="text" placeholder="Descrição:" onChangeText={value => setClothDesc(value)} color='#F5F0F6'/>
+              </Input>
+            </FormControl>
+            <FormControl w='30%' bg='#2D2221' borderRadius={4} px='$2'>
+              <RNPickerSelect placeholder={{label: "Tamanho:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
+                onValueChange={(clothSize) => setClothSize(clothSize)}
+                items={[
+                    { label: "P", value: "1", itemKey: 1 },
+                    { label: "M", value: "2", itemKey: 2 },
+                    { label: "G", value: "3", itemKey: 3 },
+                ]}
+              />
+            </FormControl>
+          </HStack>
+          <HStack space="lg" mb='$8'>
+            <FormControl w='35%' bg='#2D2221' borderRadius={4} px='$2'>
+              <RNPickerSelect placeholder={{label: "Tipo:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
+                onValueChange={(clothStyle) => setClothStyle(clothStyle)}
+                items={[
+                    { label: "Calça", value: "1", itemKey: 1 },
+                    { label: "Short", value: "2", itemKey: 2 },
+                    { label: "Camisa", value: "3", itemKey: 3 },
+                ]}
+              />
+            </FormControl>
+            <FormControl w='25.5%' bg='#2D2221' borderRadius={4} px='$2'>
+              <RNPickerSelect placeholder={{label: "Cor:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
+                onValueChange={(clothColor) => setClothColor(clothColor)}
+                items={[
+                    { label: "Azul", value: "1", itemKey: 1 },
+                    { label: "Verde", value: "2", itemKey: 2 },
+                    { label: "Vermelho", value: "3", itemKey: 3 },
+                ]}
+              />
+            </FormControl>
+            <FormControl w='30%' bg='#2D2221' borderRadius={4} px='$2'>
+              <RNPickerSelect placeholder={{label: "Tag:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
+                onValueChange={(clothColor) => setClothColor(clothColor)}
+                items={[
+                    { label: "Verão", value: "1", itemKey: 1 },
+                    { label: "Inverno", value: "2", itemKey: 2 },
+                    { label: "Social", value: "3", itemKey: 3 },
+                ]}
+              />
+            </FormControl>
+          </HStack>
+          <HStack space="lg" reversed={false} justifyContent="center">
+              <Button size="md" w='55%' h='$16' variant="solid" bg='#654E4D' isDisabled={false} isFocusVisible={false} borderRadius="$xl" onPress={(handleCadastro)}>
+                <ButtonText color='#F5F0F6' onPress={() => navigation.navigate('Closet')}>Adicionar ao closet</ButtonText>
+              </Button>
+              <Button onPress={handleState} size="md" w='20%' h='$16' variant="solid" bg={isFavorite ? '#654E4D' : '#2D2221'} isDisabled={false} isFocusVisible={false} borderRadius="$xl">
+                <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} color={isFavorite ? '#fff' : '#B2AEB2'} size={20}/>
+              </Button>
+          </HStack>
+        </Box>
+      </Box>
+    </KeyboardAwareScrollView>
+  );
+}
+
+
+
