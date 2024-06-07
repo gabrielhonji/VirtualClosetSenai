@@ -19,7 +19,7 @@ export function HomeNavigator({ navigation, route }) {
     
     return (
         <Box bg='#1E1716' h='100%'>
-            <Tab.Navigator backBehavior='history' initialRouteName='Add' screenOptions={({route}) => ({
+            <Tab.Navigator backBehavior='history' initialRouteName='Closet' screenOptions={({route}) => ({
                 tabBarIcon: ({ focused }) => {
                     let iconName;
                     let iconSize;
@@ -71,7 +71,7 @@ export function HomeNavigator({ navigation, route }) {
 export default function StartNavigator({ navigation }) {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Home" component={HomeNavigator}/>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Sign" component={Sign}/>

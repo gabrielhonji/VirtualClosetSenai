@@ -15,7 +15,6 @@ MERGED from [:react-native-image-picker] C:\Users\Aluno\Desktop\VirtualClosetSen
 MERGED from [:react-native-safe-area-context] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-screens] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-svg] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:react-native-vector-icons] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.react:react-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\149427f2a5f25fe0622d490f613a8d8c\transformed\jetified-react-android-0.72.14-debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.react:hermes-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\71a8f49848f651d12bee81faaa220ea9\transformed\jetified-hermes-android-0.72.14-debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.5.0] C:\Users\Aluno\.gradle\caches\transforms-3\463b085172aadec89519c358dac4e9e6\transformed\jetified-imagepipeline-okhttp3-2.5.0\AndroidManifest.xml:2:1-9:12
@@ -214,8 +213,6 @@ MERGED from [:react-native-screens] C:\Users\Aluno\Desktop\VirtualClosetSenai\ap
 MERGED from [:react-native-screens] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-svg] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-svg] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:react-native-vector-icons] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:react-native-vector-icons] C:\Users\Aluno\Desktop\VirtualClosetSenai\app\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.react:react-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\149427f2a5f25fe0622d490f613a8d8c\transformed\jetified-react-android-0.72.14-debug\AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.react:react-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\149427f2a5f25fe0622d490f613a8d8c\transformed\jetified-react-android-0.72.14-debug\AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.react:hermes-android:0.72.14] C:\Users\Aluno\.gradle\caches\transforms-3\71a8f49848f651d12bee81faaa220ea9\transformed\jetified-hermes-android-0.72.14-debug\AndroidManifest.xml:5:5-44

@@ -20,8 +20,8 @@ SistemaArquivos.mkdir(imageDirectory).then(() => {
 });
 
 export default function Add({ navigation, route }){
-
-  const user = route.params?.user;
+  // const user = route.params.user;
+  // console.log(user.id);
 
   const [clothName, setClothName] = useState("");
   const [clothDesc, setClothDesc] = useState("");
@@ -51,7 +51,7 @@ export default function Add({ navigation, route }){
       try {
         const response = await axios.get('http://10.0.2.2:8085/type/listar'); // Substitua pela URL da sua API
         setDataType(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       } catch (error) {
         console.error('Erro ao buscar dados da API:', error);
       }
@@ -67,7 +67,7 @@ export default function Add({ navigation, route }){
       try {
         const response = await axios.get('http://10.0.2.2:8085/size/listar'); // Substitua pela URL da sua API
         setSize(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       } catch (error) {
         console.error('Erro ao buscar dados da API:', error);
       }
@@ -82,7 +82,7 @@ export default function Add({ navigation, route }){
       try {
         const response = await axios.get('http://10.0.2.2:8085/color/listar'); // Substitua pela URL da sua API
         setColor(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       } catch (error) {
         console.error('Erro ao buscar dados da API:', error);
       }
@@ -98,7 +98,7 @@ export default function Add({ navigation, route }){
       try {
         const response = await axios.get('http://10.0.2.2:8085/tag/listar'); // Substitua pela URL da sua API
         setTag(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       } catch (error) {
         console.error('Erro ao buscar dados da API:', error);
       }
@@ -134,12 +134,12 @@ export default function Add({ navigation, route }){
       type_id_type : clothStyle,
       size_id_size : clothSize,
       color_id_color : clothColor,
-      tag_id_tag : clothTag,
       favorite : isFavorite,
+      tag_id_tag : clothTag,
       image: imageData
     }
 
-    console.log(data);
+    //console.log(data);
     try {
       await axios.post('http://10.0.2.2:8085/roupas/cadastrar', data, config);
       Alert.alert('Cadastro realizado com sucesso');
@@ -187,7 +187,6 @@ export default function Add({ navigation, route }){
     });
   };
 
-  
   return (
     <KeyboardAwareScrollView enableOnAndroid={true} 
     contentContainerStyle={{backgroundColor: '#1E1716', minHeight: '100%'}}>
@@ -216,6 +215,7 @@ export default function Add({ navigation, route }){
             <FormControl w='30%' bg='#2D2221' borderRadius={4} px='$2'>
               <RNPickerSelect placeholder={{label: "Tamanho:", value: null, color: '#000000'}} useNativeAndroidPickerStyle={false}
                 onValueChange={(clothSize) => setClothSize(clothSize)}
+      
                 items={[
                     { label: "PP", value: "1", itemKey: 1 },
                     { label: "P", value: "2", itemKey: 2 },
